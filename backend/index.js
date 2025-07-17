@@ -11,6 +11,11 @@ app.use(express.json());
 const rsvpRoutes = require('./routes/rsvp.routes');
 app.use('/api', rsvpRoutes);
 
+// Ruta raíz (opcional)
+app.get('/', (req, res) => {
+  res.send('¡Servidor backend corriendo correctamente!');
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor backend corriendo en http://localhost:${PORT}`);

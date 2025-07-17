@@ -5,12 +5,12 @@ const pool = require('../db');
 // POST: Guardar confirmación
 router.post('/confirmacion', async (req, res) => {
   try {
-    const { nombre, asistencia, invitados } = req.body;
+    const { nombre, asistencia, comida } = req.body;
 
     const result = await pool.query(
-      `INSERT INTO confirmaciones (nombre, asistencia, invitados, fecha_confirmacion)
-       VALUES ($1, $2, $3, NOW()) RETURNING *`,
-      [nombre, asistencia, invitados]
+      `INSERT INTO confirmaciones (nombre, asistencia, comida)
+       VALUES ($1, $2, $3) RETURNING *`,
+      [nombre, asistencia, comida]
     );
 
     res.status(201).json(result.rows[0]);
