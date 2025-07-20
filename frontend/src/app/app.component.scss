@@ -1,0 +1,518 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Dancing+Script&family=Playfair+Display&display=swap');
+
+
+
+
+.home-container {
+  font-family: 'Playfair Display', serif;
+  padding: 2rem;
+  background: linear-gradient(to bottom, #fff8f0, #fcebe0);
+  color: #5a3e36;
+  
+
+  h1, h2, p {
+    font-family: 'Dancing Script', cursive; // Manteniendo tu fuente
+    text-align: center; /* ESTO ES LO QUE LOS CENTRA HORIZONTALMENTE */
+    width: 100%; // Asegura que el elemento ocupe todo el ancho para que text-align funcione bien
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: #a34e4e;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-top: 2rem;
+    color: #b85d5d;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #555;
+  }
+
+  .tarjeta {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  .emoji {
+    font-size: 3rem;
+    margin: 0.5rem 0;
+  }
+
+  .oracion {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .nube {
+    margin-top: 1rem;
+    background-color: #fff2f2;
+    color: #a34e4e;
+    border: 1px solid #f0caca;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    animation: fadeIn 0.4s ease-in-out;
+  }
+
+  .ubicaciones {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+
+    .tarjeta {
+      flex: 1 1 45%;
+      min-width: 280px;
+    }
+  }
+
+  .btn-mapa {
+    background-color: #b85d5d;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 1rem;
+
+    &:hover {
+      background-color: #a34e4e;
+    }
+  }
+
+  .carrusel {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    overflow-x: auto;
+
+    img {
+      border-radius: 12px;
+      object-fit: cover;
+      width: 200px;
+      height: 150px;
+    }
+  }
+
+  .hashtag {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #a34e4e;
+    text-align: center;
+    margin: 1rem 0;
+  }
+}
+
+.bienvenida {
+  max-width: 1280px;
+  margin: 2rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .imagen-lado {
+    flex: 1;
+    min-width: 300px;
+    max-height: 400px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px 0 0 16px;
+    }
+  }
+
+  .contenido-lado {
+    flex: 1;
+    padding: 2rem;
+    text-align: center;
+    background-color: #12372A;
+    color: #d1a954;
+    border-radius: 0 16px 16px 0;
+
+    .iniciales {
+      font-size: 4rem;
+      font-weight: bold;
+    }
+
+    .nombres {
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      color: rgba(197, 143, 77, 1);
+    }
+
+    .mensaje {
+      font-size: 1rem;
+      color: #f1e5c9;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .bienvenida {
+    flex-direction: column;
+
+    .imagen-lado, .contenido-lado {
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+
+  .home-container .ubicaciones {
+    flex-direction: column;
+  }
+
+  .home-container .carrusel img {
+    width: 140px;
+    height: 100px;
+  }
+}
+
+/* --------------------------- cronómetro --------------------------------*/
+.contador {
+  // text-align: center; /* Esto ya no es estrictamente necesario si los hijos son flex items y se centran con justify-content */
+  
+  /* Centrado del bloque del contador: */
+  margin: 20px auto; /* Centra el BLOQUE del cronómetro */
+  width: 100%; /* Asegura que el contador ocupe el 100% del ancho de su padre */
+  max-width: 600px; /* Opcional: limita el ancho máximo del cronómetro para evitar que se estire demasiado */
+  box-sizing: border-box; /* Incluye padding y border en el ancho/alto total */
+
+  /* Estilos de fuente y color */
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.8rem;
+  color: #a34e4e;
+
+  /* Comportamiento Flexbox para los elementos internos del cronómetro: */
+  display: flex;
+  justify-content: center; /* Centra los elementos internos (días, horas, etc.) */
+  gap: 15px; /* Espacio entre los números (días, horas, etc.) */
+  flex-wrap: wrap; /* Para que los elementos se envuelvan en pantallas pequeñas */
+  padding: 0 10px; /* Un poco de padding horizontal para evitar que el contenido toque los bordes */
+}
+/* --------------------------- carrucel --------------------------------*/
+
+/* Contenedor principal del carrusel */
+.carrusel-auto {
+  overflow: hidden; /* Oculta cualquier imagen que se desborde del contenedor */
+  white-space: nowrap; /* Evita que las imágenes se apilen verticalmente */
+  position: relative; /* Necesario para posicionar el track si fuera el caso, o para elementos hijos */
+  width: 100%; /* O el ancho fijo que desees para tu carrusel */
+  padding: 20px 0; /* Un poco de espacio vertical si lo necesitas */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil para un aspecto más "lindo" */
+  background-color: #f8f8f8; /* Un fondo suave para el carrusel */
+}
+
+/* Contenedor de las imágenes (el que se moverá) */
+.carrusel-track {
+  display: flex; /* Usa flexbox para alinear las imágenes horizontalmente */
+  animation: carruselScroll 30s linear infinite; /* Aplica la animación */
+  /*
+    30s: Duración de la animación. Ajusta según la velocidad deseada.
+    linear: Velocidad constante.
+    infinite: Se repite infinitamente.
+  */
+}
+
+/* Estilos para cada imagen dentro del carrusel */
+.carrusel-track img {
+  flex-shrink: 0; /* Evita que las imágenes se encojan */
+  width: 300px; /* Ancho fijo para cada imagen. ¡Ajusta este valor! */
+  height: 200px; /* Altura fija para cada imagen. ¡Ajusta este valor! */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+  margin: 0 15px; /* Espacio entre las imágenes */
+  border-radius: 8px; /* Bordes redondeados para un look más suave */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad a cada foto */
+  transition: transform 0.3s ease-in-out; /* Transición suave para efectos hover */
+}
+
+/* Efecto al pasar el mouse sobre una imagen (opcional, para hacerlo más interactivo) */
+.carrusel-track img:hover {
+  transform: scale(1.05); /* Agranda ligeramente la imagen al pasar el mouse */
+}
+
+/* Definición de la animación */
+@keyframes carruselScroll {
+  0% {
+    transform: translateX(0); /* Al inicio, no hay desplazamiento */
+  }
+  100% {
+    /* Desplaza el carrusel a la izquierda por la mitad de su contenido.
+       Esto es crucial porque tienes las fotos duplicadas.
+       Si el ancho de una imagen es 300px y tienes 6 fotos originales,
+       la mitad de la pista es (6 * 300px) + (6 * 15px de margen * 2) = 1800 + 180 = 1980px.
+       Es decir, (cantidad_fotos_originales * (ancho_imagen + 2*margen_lateral_por_imagen))
+       Ajusta -1980px según el ancho real de tus imágenes y márgenes.
+       Una forma más dinámica es calcularlo en JavaScript si la cantidad de fotos o sus tamaños son variables,
+       pero para un SCSS estático, necesitas un valor fijo.
+       Si no tienes márgenes laterales, sería solo (cantidad_fotos_originales * ancho_imagen).
+    */
+    transform: translateX(calc(-1 * (var(--total-ancho-original-fotos)))); /* Usar una variable CSS si se calcula dinámicamente */
+  }
+}
+
+/* --- Consideraciones para el cálculo de `translateX` --- */
+/*
+   Para que la animación funcione perfectamente con el loop infinito,
+   el valor de `translateX(calc(-1 * (var(--total-ancho-original-fotos))))`
+   en `@keyframes carruselScroll` debe ser exactamente el ancho total
+   del **conjunto original de imágenes más sus márgenes**.
+
+   Si tus imágenes tienen 300px de ancho y 15px de margen a cada lado (total 30px por imagen),
+   y tienes 6 fotos originales, el cálculo sería:
+   (6 fotos * (300px ancho + 30px margen total)) = 6 * 330px = 1980px.
+   Entonces, el valor sería `translateX(-1980px)`.
+
+   Si necesitas que esto sea dinámico (por ejemplo, si el número de fotos o su tamaño cambia),
+   tendrías que calcular este valor con JavaScript y aplicarlo como una variable CSS
+   al `.carrusel-track` o directamente al `@keyframes`.
+
+   Ejemplo con una variable CSS (necesitarías JS para setearla):
+   .carrusel-track {
+     --total-ancho-original-fotos: 1980px; /* Ejemplo: calcula esto en JS y aplícalo */
+   /*  animation: carruselScroll 30s linear infinite;
+   }*/
+ @keyframes carruselScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-1980px); /* ¡Este es el valor clave! */
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+
+
+/* --- Estilos para el Carrusel Estático (Miniaturas) --- */
+
+.carrusel-container {
+  display: flex; /* Usa flexbox para alinear el carrusel y los botones */
+  align-items: center; /* Centra verticalmente los elementos */
+  justify-content: center; /* Centra horizontalmente el contenido del carrusel */
+  width: 90%; /* Ajusta el ancho total del carrusel */
+  max-width: 1000px; /* Límite máximo de ancho para pantallas grandes */
+  margin: 40px auto; /* Centra el carrusel horizontalmente y añade margen vertical */
+  padding: 20px;
+  background-color: #f8f8f8; /* Fondo suave */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+.btn-carrusel {
+  background-color: #ffb6c1; /* Rosa claro para los botones */
+  color: #fff;
+  border: none;
+  border-radius: 50%; /* Botones redondos */
+  width: 50px;
+  height: 50px;
+  font-size: 2em; /* Tamaño grande para los íconos (‹ ›) */
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+  margin: 0 15px; /* Espacio entre el botón y el carrusel */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para los botones */
+
+  &:hover {
+    background-color: #ff9aa2; /* Tono de rosa más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Ligeramente más grande al pasar el mouse */
+  }
+
+  &:active {
+    transform: scale(0.98); /* Pequeño efecto de "presión" al hacer clic */
+  }
+}
+
+.carrusel {
+  display: flex; /* Usa flexbox para las miniaturas dentro del carrusel */
+  overflow: hidden; /* Oculta las miniaturas extra que no están visibles */
+  width: 100%; /* El carrusel ocupa el espacio restante entre los botones */
+  justify-content: center; /* Centra las miniaturas si hay menos de las esperadas */
+  gap: 20px; /* Espacio entre las miniaturas */
+}
+
+.carrusel img {
+  flex-shrink: 0; /* Evita que las imágenes se encojan */
+  width: 280px; /* Ancho de cada miniatura. ¡Ajusta este valor! */
+  height: 180px; /* Altura de cada miniatura. ¡Ajusta este valor! */
+  object-fit: cover; /* Recorta la imagen para llenar el espacio sin distorsionar */
+  border-radius: 8px; /* Bordes redondeados para las miniaturas */
+  cursor: pointer; /* Indica que la imagen es clicable */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones para hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para las miniaturas */
+
+  &:hover {
+    transform: translateY(-5px); /* Efecto de "levantar" al pasar el mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el mouse */
+  }
+}
+
+/* --- Estilos para el Modal de Imagen de Pantalla Completa --- */
+
+.modal {
+  position: fixed; /* Posicionamiento fijo para cubrir toda la pantalla */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); /* Fondo semitransparente oscuro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Asegura que esté por encima de todo lo demás */
+  backdrop-filter: blur(5px); /* Efecto de desenfoque al fondo (opcional, para navegadores modernos) */
+  padding: 20px; // Añade un padding para que la imagen no toque los bordes extremos
+  box-sizing: border-box; // Asegura que el padding se incluya en el width/height
+}
+
+.modal-content {
+  position: relative; /* Para posicionar los botones de navegación y cierre */
+  max-width: 90%; /* Ancho máximo de la imagen dentro del modal */
+  max-height: 90%; /* Altura máxima de la imagen dentro del modal */
+  display: flex; /* Para centrar la imagen dentro de su contenedor de contenido */
+  align-items: center;
+  justify-content: center;
+  background-color: transparent; /* El fondo real es el semi-transparente del modal */
+}
+
+.modal-content img {
+  max-width: 100%; /* Asegura que la imagen no se desborde del modal-content */
+  max-height: 100%; /* Asegura que la imagen no se desborde del modal-content */
+  object-fit: contain; /* Muestra toda la imagen dentro del modal, con barras si es necesario */
+  border-radius: 10px; /* Bordes redondeados para la imagen grande */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra más fuerte para la imagen principal */
+  display: block;
+  }
+
+/* Botones de navegación dentro del modal (anterior/siguiente) */
+.modal-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.3); /* Botones semitransparentes */
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px; /* Más grandes que los botones del carrusel */
+  height: 60px;
+  font-size: 3em;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 1010; /* Por encima de la imagen en el modal */
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+     transform: translateY(-50%) scale(1.1);
+  }
+}
+
+/*&:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+*/
+
+.modal-nav-btn.prev {
+  left: 20px; /* Ajusta la distancia desde el borde de la imagen */
+  @media (max-width: 768px) {
+    left: 10px; /* Más cerca en pantallas pequeñas */
+  }
+}
+
+.modal-nav-btn.next {
+  right: 20px; /* Ajusta la distancia desde el borde de la imagen */
+  @media (max-width: 768px) {
+    right: 10px; /* Más cerca en pantallas pequeñas */
+  }
+}
+
+/* Botón de cierre del modal */
+.modal-close-btn {
+  position: absolute;
+  top: 20px; /* Distancia desde el borde superior */
+  right: 20px; /* Distancia desde el borde derecho */
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 2em;
+  line-height: 1; /* Para centrar la 'X' */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1010;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Estilos para ocultar el scroll del cuerpo cuando el modal está abierto */
+body.modal-open {
+  overflow: hidden;
+}
+
+
+.main-content-wrapper {
+  width: 100%; /* Ocupa todo el ancho de app-root */
+  max-width: 1200px; /* Define el ancho máximo de tu contenido */
+  margin: 0 auto; /* **Esto centra el wrapper** */
+  padding: 20px; /* Espacio interno para que el contenido no pegue a los bordes */
+  box-sizing: border-box; /* Incluye el padding en el cálculo del ancho */
+
+  /* Si quieres que los hijos directos del router-outlet también se centren */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los bloques hijos horizontalmente */
+}
+
+/* También añade estilos para centrar el texto dentro de los elementos */
+h1, h2, p {
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.decoracion {
+  display: block; /* Convierte la imagen en un bloque para poder centrarla con margin */
+  width: 50px; /* Define el ancho deseado (ajústalo según necesites) */
+  height: auto; /* Mantiene la proporción de la imagen */
+  margin: 10px auto; /* Centra la imagen horizontalmente (arriba y abajo tendrá 10px de margen) */
+}

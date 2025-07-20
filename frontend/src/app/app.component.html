@@ -1,8 +1,183 @@
-<h1>Casamiento de Fernando y Laura</h1>
 
-<!-- Botón para confirmar asistencia -->
-<!--<a routerLink="/rsvp">
-  <button>Confirmar asistencia</button>
-</a>-->
+<section class="bienvenida">
+  <div class="imagen-lado">
+    <img src="/assets/imagenes/anillos.jpeg" alt="anillos" />
+  </div>
+  <div class="contenido-lado">
+    <p class="fecha">27/09/2025</p>
+    <h1 class="iniciales">L & F</h1>
+    <h2 class="nombres">LAU & FER</h2>
+    <p class="mensaje">"El amor todo lo puede, todo lo cree, todo lo espera, todo lo soporta." - 1 Corintios 13:7</p>
+   
+  </div>
+</section>
 
-<router-outlet></router-outlet>
+
+
+<div class="home-container">
+  
+  <div class="contador">
+    <p>Faltan</p>
+    <div class="tiempo">
+      <span>{{ dias }} días</span>
+      <span>{{ horas }} hs</span>
+      <span>{{ minutos }} min</span>
+      <span>{{ segundos }} seg</span>
+    </div>
+  </div>
+
+  <!-- <router-outlet></router-outlet>   BOTON ASISTENCIA -->
+
+  <h1>¿Cuando y Dónde?</h1>
+
+<div class="ubicaciones">
+  <!-- Tarjeta CEREMONIA -->
+<div class="tarjeta">
+    <h3 class="titulo">CEREMONIA</h3>
+    <p class="lugar">Capilla de Nuestra Señora del Rosario de San Nicolás</p>
+    <p class="fecha">27 de septiembre de 2025 • 17:30</p>
+    <p class="direccion">Salas y Valdez 101, T4107 Yerba Buena, Tucumán</p>
+
+    <div class="mapa-boton">
+      <a
+        class="btn-mapa"
+        href="https://www.google.com/maps/search/?api=1&query=Capilla+Nuestra+Señora+del+Rosario+de+San+Nicolás+Salas+y+Valdez+101+Yerba+Buena+Tucumán"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ¿Cómo llegar?
+      </a>
+    </div>
+  </div>
+
+<!-- Tarjeta RECEPCIÓN -->
+<div class="tarjeta">
+    <h3 class="titulo">RECEPCIÓN</h3>
+    <p class="lugar">Salón Keké Yerba Buena</p>
+    <p class="fecha">27 de septiembre de 2025 • 19:00</p>
+    <p class="direccion">Jorge Luis Borges, Pje. Elvira Imbaud y, Yerba Buena, Tucumán</p>
+
+    <div class="mapa-boton">
+      <a
+        class="btn-mapa"
+        href="https://www.google.com/maps/search/?api=1&query=Salón+Keké+Yerba+Buena+Jorge+Luis+Borges+Pje.+Elvira+Imbaud+Yerba+Buena+Tucumán"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ¿Cómo llegar?
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+<h2>Informacion de la Fiesta</h2>
+<p>Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta.</p>
+
+<!-- Tarjeta Dress Code -->
+<div class="tarjeta">
+  <h3 class="titulo">Dress Code</h3>
+  <div class="emoji">🤵</div>
+  <p class="oracion">Una orientación para que elijas tu mejor vestuario</p>
+  <button class="btn-mapa" (click)="mostrarNubeDressCode = !mostrarNubeDressCode">
+    Ver sugerencia
+  </button>
+  <div *ngIf="mostrarNubeDressCode" class="nube">
+    Elegante: Vestimenta formal, ideal para una celebración especial.
+  </div>
+</div>
+
+<!-- Tarjeta Música -->
+<div class="tarjeta">
+  <h3 class="titulo">Música</h3>
+  <div class="emoji">🎶</div>
+  <p class="oracion">¿Cuál es la canción que no debe faltar en la playlist de la fiesta?</p>
+  <button class="btn-mapa" (click)="mostrarNubeMusica = !mostrarNubeMusica">
+    Sugerir canción
+  </button>
+  <div *ngIf="mostrarNubeMusica" class="nube">
+    Podés enviarnos tu canción favorita por mensaje o en el formulario RSVP. 🎧
+  </div>
+</div>
+
+<!-- Tarjeta Info Adicional -->
+<div class="tarjeta">
+  <h3 class="titulo">Info Adicional</h3>
+  <div class="emoji">💡</div>
+  <p class="oracion">Información adicional para tener en cuenta</p>
+  <button class="btn-mapa" (click)="mostrarNubeInfo = !mostrarNubeInfo">
+    Ver info
+  </button>
+  <div *ngIf="mostrarNubeInfo" class="nube">
+    En caso de lluvia, la celebración continúa normalmente ya que el lugar es techado. ☔
+  </div>
+</div>
+
+<div class="main-content-wrapper">
+  <router-outlet></router-outlet>
+</div>
+
+
+
+<h2>Retrato de Nuestro Amor</h2>
+<p>Un minuto, un segundo, un instante que queda en la eternidad.</p>
+
+<!-- Carrusel de Fotos -->
+<div class="carrusel-container">
+  <button class="btn-carrusel" (click)="anterior()">‹</button>
+
+  <div class="carrusel">
+    <img *ngFor="let foto of fotosMostradas" [src]="foto" (click)="abrirModal(foto)" />
+  </div>
+
+  <button class="btn-carrusel" (click)="siguiente()">›</button>
+</div>
+
+<!-- Modal de imagen -->
+<div class="modal" *ngIf="fotoSeleccionada" (click)="cerrarModal()">
+  <button class="modal-close-btn" (click)="cerrarModal()">×</button>
+
+  <button
+    class="modal-nav-btn prev"
+    (click)="$event.stopPropagation(); modalAnterior()"
+  >
+    ‹
+  </button>
+
+  <div class="modal-content">
+    <img [src]="fotoSeleccionada" alt="Foto seleccionada" (click)="$event.stopPropagation()" />
+  </div>
+
+  <button
+    class="modal-nav-btn next"
+    class="modal-nav-btn next"
+    (click)="$event.stopPropagation(); modalSiguiente()"
+  >
+    ›
+  </button>
+</div>
+
+<h2>Comparte tus fotos</h2>
+
+<div class="hashtag">
+  #LauYFer2025
+</div>
+
+<div class="carrusel-auto">
+  <div class="carrusel-track">
+    <img *ngFor="let foto of fotos" [src]="foto" alt="Foto carrusel" />
+    <!-- Duplicamos las fotos para que el loop parezca infinito -->
+    <img *ngFor="let foto of fotos" [src]="foto" alt="Foto carrusel duplicada" />
+  </div>
+</div>
+
+<img src="/assets/imagenes/corazon-circular.png" alt="decoración" class="decoracion" />
+
+<h1>Lau & Fer</h1>
+<p>27 de septiembre de 2025</p>
+
+
+</div>
+
