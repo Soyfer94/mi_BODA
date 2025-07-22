@@ -1,0 +1,72 @@
+.tarjeta {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.emoji {
+  font-size: 3rem;
+  margin: 0.5rem 0;
+}
+
+.oracion {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.btn-mapa {
+  background-color: #e0aaff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 1rem;
+}
+
+.btn-mapa:hover {
+  background-color: #c77dff;
+}
+
+.form-cancion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+
+  input {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 1rem;
+  }
+
+  button[type='submit'] {
+    background-color: #ffc2d1;
+    border: none;
+    border-radius: 12px;
+    padding: 0.6rem 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button[type='submit']:hover {
+    background-color: #ff92ac;
+  }
+
+  button[disabled] {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+}

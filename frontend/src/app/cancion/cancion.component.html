@@ -1,0 +1,15 @@
+<!-- Tarjeta Música -->
+<div class="tarjeta">
+  <h3 class="titulo">Música</h3>
+  <div class="emoji">🎶</div>
+  <p class="oracion">¿Cuál es la canción que no debe faltar en la playlist de la fiesta?</p>
+
+  <button class="btn-mapa" (click)="mostrarFormulario = !mostrarFormulario">
+    Sugerir canción
+  </button>
+
+  <form *ngIf="mostrarFormulario" [formGroup]="formCancion" (ngSubmit)="enviarCancion()" class="form-cancion">
+    <input type="text" formControlName="cancion" placeholder="Nombre de la canción" required />
+    <button type="submit" [disabled]="formCancion.invalid">Enviar</button>
+  </form>
+</div>

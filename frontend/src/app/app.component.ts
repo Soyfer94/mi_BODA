@@ -3,21 +3,30 @@ import { Component, HostListener } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';  // <-- Importá HttpClientModule
 import { CommonModule } from '@angular/common'; // 👈 Asegurate de importar esto
-
+import { CancionComponent } from '../app/cancion/cancion.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ RouterModule, RouterOutlet, HttpClientModule, CommonModule],
+  imports: [ RouterModule, RouterOutlet, HttpClientModule, CommonModule, CancionComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']  // Usá `.css` si no estás usando SASS
 })
 
 
+//@Component({
+ // selector: 'app-home',
+ // standalone: true,
+ // imports: [CancionComponent],
+ // templateUrl: './app.component.html',
+ // styleUrls: ['./app.component.scss'],
+//})
+//export class HomeComponent {}
 
 
 export class AppComponent {
   title = 'Tarjeta de boda';
+  
 
 // ⏳ Contador regresivo
   dias: number = 0;

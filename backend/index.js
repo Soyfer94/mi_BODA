@@ -9,7 +9,12 @@ app.use(express.json());
 
 // Rutas
 const rsvpRoutes = require('./routes/rsvp.routes');
+const cancionRoutes = require('./routes/cancion.routes');
+
+
 app.use('/api', rsvpRoutes);
+app.use('/api/canciones', cancionRoutes);
+
 
 // Ruta raíz (opcional)
 app.get('/', (req, res) => {
