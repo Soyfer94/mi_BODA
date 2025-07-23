@@ -4,6 +4,10 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';  // <-- Importá HttpClientModule
 import { CommonModule } from '@angular/common'; // 👈 Asegurate de importar esto
 import { CancionComponent } from '../app/cancion/cancion.component';
+//----audio-----
+import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { ChangeDetectorRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -53,11 +57,109 @@ export class AppComponent {
   mostrarNubeDressCode = false;
   mostrarNubeMusica = false;
   mostrarNubeInfo = false;
+  mostrarBienvenida = true;
+  mostrarBotonMusica = false;
 
-  constructor() {
+// 🎵 Reproductor de audio
+  //@ViewChild('audioPlayer', { static: true }) audioPlayer!: ElementRef<HTMLAudioElement>;
+  @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
+  canciones: string[] = [
+    '/assets/audio/La_Plena_(W_Sound_05).mp3',
+    '/assets/audio/Tu_jardin_con_enanitos.mp3'
+  ];
+  cancionActual = 0;
+  isMuted = true;
+  hasInteracted = false;
+
+
+  constructor(private cdr: ChangeDetectorRef) {
     this.iniciarContador();
     this.actualizarCarrusel();
   }
+
+ ngAfterViewInit() {
+    const audio = this.audioPlayer.nativeElement;
+    console.log('Cargando canción:', this.canciones[this.cancionActual]);
+    audio.src = this.canciones[this.cancionActual];
+    audio.loop = false;
+    audio.muted = true;
+    audio.volume = 0.4;
+
+    audio.addEventListener('ended', () => {
+      this.cancionActual = (this.cancionActual + 1) % this.canciones.length;
+      audio.src = this.canciones[this.cancionActual];
+      audio.play() .catch(() => {;
+    });
+
+    
+    });
+  }
+
+  
+  //activarMusica() {
+  //if (!this.hasInteracted && this.audioPlayer) {
+   // this.hasInteracted = true;
+    //const audio = this.audioPlayer.nativeElement;
+    //audio.muted = false;
+    //this.isMuted = false;
+    //audio.play().catch(err => {
+     // console.warn('No se pudo reproducir el audio:', err);
+    //});
+ // }
+  // this.mostrarBienvenida = false;
+//}
+
+//activarMusica() {
+  //if (!this.hasInteracted && this.audioPlayer) {
+    //this.hasInteracted = true;
+    //this.mostrarBotonMusica = true;
+    //const audio = this.audioPlayer.nativeElement;
+    //audio.muted = false;
+    //this.isMuted = false;
+    //audio.play().catch(err => {
+     // console.warn('No se pudo reproducir el audio:', err);
+    //});
+  //}
+  //this.mostrarBienvenida = false;
+  
+//}
+
+
+activarMusica() {
+  this.hasInteracted = true;
+  this.mostrarBotonMusica = true;
+  this.mostrarBienvenida = false;
+
+  const audio = this.audioPlayer?.nativeElement;
+  if (audio) {
+    audio.muted = false;
+    this.isMuted = false;
+    audio.play().catch(err => {
+      console.warn('No se pudo reproducir el audio:', err);
+    });
+  }
+
+  console.log('Entró con música. mostrarBotonMusica:', this.mostrarBotonMusica);
+  this.cdr.detectChanges();
+}
+
+
+
+
+
+ingresarSinMusica() {
+    this.hasInteracted = false;
+    this.mostrarBienvenida = false;
+    this.mostrarBienvenida = false;
+  }
+
+  toggleMute() {
+    const audio = this.audioPlayer.nativeElement;
+    this.isMuted = !this.isMuted;
+    audio.muted = this.isMuted;
+  }
+
+
 
   // Hook para controlar el scroll del body cuando el modal está abierto
   @HostListener('document:body', ['$event'])
@@ -152,3 +254,5 @@ export class AppComponent {
     }
   }
 }
+
+//-----------------------audio--------------------------------

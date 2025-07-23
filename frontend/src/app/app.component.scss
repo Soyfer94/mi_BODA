@@ -235,11 +235,7 @@
 .carrusel-track {
   display: flex; /* Usa flexbox para alinear las imágenes horizontalmente */
   animation: carruselScroll 30s linear infinite; /* Aplica la animación */
-  /*
-    30s: Duración de la animación. Ajusta según la velocidad deseada.
-    linear: Velocidad constante.
-    infinite: Se repite infinitamente.
-  */
+  
 }
 
 /* Estilos para cada imagen dentro del carrusel */
@@ -265,41 +261,12 @@
     transform: translateX(0); /* Al inicio, no hay desplazamiento */
   }
   100% {
-    /* Desplaza el carrusel a la izquierda por la mitad de su contenido.
-       Esto es crucial porque tienes las fotos duplicadas.
-       Si el ancho de una imagen es 300px y tienes 6 fotos originales,
-       la mitad de la pista es (6 * 300px) + (6 * 15px de margen * 2) = 1800 + 180 = 1980px.
-       Es decir, (cantidad_fotos_originales * (ancho_imagen + 2*margen_lateral_por_imagen))
-       Ajusta -1980px según el ancho real de tus imágenes y márgenes.
-       Una forma más dinámica es calcularlo en JavaScript si la cantidad de fotos o sus tamaños son variables,
-       pero para un SCSS estático, necesitas un valor fijo.
-       Si no tienes márgenes laterales, sería solo (cantidad_fotos_originales * ancho_imagen).
-    */
+    
     transform: translateX(calc(-1 * (var(--total-ancho-original-fotos)))); /* Usar una variable CSS si se calcula dinámicamente */
   }
 }
 
-/* --- Consideraciones para el cálculo de `translateX` --- */
-/*
-   Para que la animación funcione perfectamente con el loop infinito,
-   el valor de `translateX(calc(-1 * (var(--total-ancho-original-fotos))))`
-   en `@keyframes carruselScroll` debe ser exactamente el ancho total
-   del **conjunto original de imágenes más sus márgenes**.
 
-   Si tus imágenes tienen 300px de ancho y 15px de margen a cada lado (total 30px por imagen),
-   y tienes 6 fotos originales, el cálculo sería:
-   (6 fotos * (300px ancho + 30px margen total)) = 6 * 330px = 1980px.
-   Entonces, el valor sería `translateX(-1980px)`.
-
-   Si necesitas que esto sea dinámico (por ejemplo, si el número de fotos o su tamaño cambia),
-   tendrías que calcular este valor con JavaScript y aplicarlo como una variable CSS
-   al `.carrusel-track` o directamente al `@keyframes`.
-
-   Ejemplo con una variable CSS (necesitarías JS para setearla):
-   .carrusel-track {
-     --total-ancho-original-fotos: 1980px; /* Ejemplo: calcula esto en JS y aplícalo */
-   /*  animation: carruselScroll 30s linear infinite;
-   }*/
  @keyframes carruselScroll {
   0% {
     transform: translateX(0);
@@ -515,4 +482,138 @@ h1, h2, p {
   width: 50px; /* Define el ancho deseado (ajústalo según necesites) */
   height: auto; /* Mantiene la proporción de la imagen */
   margin: 10px auto; /* Centra la imagen horizontalmente (arriba y abajo tendrá 10px de margen) */
+}
+
+.boton-musica {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  box-shadow: none;
+  display: inline-flex;          // que el botón solo sea tan ancho como su contenido
+  align-items: center;
+  justify-content: center;
+  width: 50px;                  // igual que el ícono
+  height: 50px;                 // igual que el ícono
+  overflow: hidden;             // para evitar "extra space"
+  transition: transform 0.2s ease;  // para animar hover
+}
+
+.boton-musica:hover {
+  transform: scale(1.1);         // agrandar un poco al pasar el mouse
+  }
+
+
+.pantalla-bienvenida {
+ position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1e2c26;
+  color: #e2c68c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  text-align: center;
+ 
+  .contenedor-bienvenida {
+    margin: auto;
+    padding: 2rem 1.5rem;
+    max-width: 95%;
+    box-sizing: border-box;
+    border-radius: 16px;
+    border: 2px solid #e2c68c; // ✅ borde dorado
+  }
+
+.subtitulo {
+  letter-spacing: 0.2rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.titulo {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  font-family: 'Georgia', serif;
+}
+
+.descripcion {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-musica {
+  background-color: transparent;
+  color: #e2c68c;
+  border: 1px solid #e2c68c;
+}
+
+.btn-simple {
+  background-color: transparent;
+  color: #e2c68c;
+  border: 1px solid #e2c68c;
+}
+
+/* 📱 Responsive para pantallas pequeñas */
+@media (max-height: 700px) {
+    .contenedor-bienvenida {
+      padding: 1.5rem 1rem;
+    }
+  }
+}
+
+  .titulo {
+    font-size: 2.2rem;
+  }
+
+  .descripcion {
+    font-size: 1rem;
+  }
+
+  .btn {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+    width: 100%;
+  }
+
+  .botones {
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+button {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .icono-musica {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }

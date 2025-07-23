@@ -1,4 +1,46 @@
 
+ <!-- ✅ Reproductor de audio (¡solo uno!) -->
+    <audio #audioPlayer preload="auto" loop></audio>
+
+<!-- 🔊 Botón de volumen (opcional) -->
+<button 
+  *ngIf="mostrarBotonMusica" 
+  class="boton-musica" 
+  (click)="toggleMute()">
+ <!-- {{ isMuted ? '🔇' : '🔊' }}-->
+   <img 
+    [src]="isMuted ? 'assets/imagenes/pausa.png' : 'assets/imagenes/jugar.png'" 
+    alt="icono sonido" 
+    class="icono-musica" />
+</button>
+
+<!-- Pantalla de bienvenida -->
+<div class="pantalla-bienvenida" *ngIf="mostrarBienvenida">
+  <div class="contenedor-bienvenida">
+    <p class="subtitulo">BIENVENIDOS A LA INVITACIÓN DE</p>
+    <h1 class="titulo">Lau & Fer</h1>
+    <p class="descripcion">La música de fondo es parte de la experiencia</p>
+
+ <!-- ✅ Botones -->
+
+    <div class="botones">
+      <button 
+          *ngIf="!hasInteracted" class="btn btn-musica"
+          (click)="activarMusica()">
+          🎵 Activar música
+      </button>
+     
+      <button (click)="ingresarSinMusica()" class="btn btn-simple">
+        Ingresar sin música
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="!mostrarBienvenida">
+<!--------------------- abajo resto de la app ----------------->
+
 <section class="bienvenida">
   <div class="imagen-lado">
     <img src="/assets/imagenes/anillos.jpeg" alt="anillos" />
@@ -183,6 +225,15 @@
 
 <h1>Lau & Fer</h1>
 <p>27 de septiembre de 2025</p>
+
+</div>
+<!---------------------------- audio --------------------->
+
+<!-- 🎧 Audio oculto -->
+
+<!-- <button class="boton-musica" (click)="toggleMute()">
+  {{ isMuted ? '🔇' : '🔊' }}
+</button>-->
 
 
 </div>
