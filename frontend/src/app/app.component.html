@@ -18,7 +18,7 @@
 <div class="pantalla-bienvenida" *ngIf="mostrarBienvenida">
   <div class="contenedor-bienvenida">
     <p class="subtitulo">BIENVENIDOS A LA INVITACIÓN DE</p>
-    <h1 class="titulo">Lau & Fer</h1>
+    <h1 class="titulo">Lau y Fer</h1>
     <p class="descripcion">La música de fondo es parte de la experiencia</p>
 
  <!-- ✅ Botones -->
@@ -55,27 +55,44 @@
 </section>
 
 
-
 <div class="home-container">
+
+<!-------------------- CRONOMETRO -------------------------------------->
+
+  <div class="contenedor-contador">
+  <h1 class="contador-titulo">Faltan</h1>
+  <img src="/assets/imagenes/reloj.png" alt="decoración" class="decoracion">
   
   <div class="contador">
-    <p>Faltan</p>
-    <div class="tiempo">
-      <span>{{ dias }} días</span>
-      <span>{{ horas }} hs</span>
-      <span>{{ minutos }} min</span>
-      <span>{{ segundos }} seg</span>
+    <div class="bloques-tiempo">
+      <div class="bloque">
+        <div class="valor">{{ dias }}</div>
+        <div class="unidad">DÍAS</div>
+      </div>
+      <div class="bloque">
+        <div class="valor">{{ horas }}</div>
+        <div class="unidad">HORAS</div>
+      </div>
+      <div class="bloque">
+        <div class="valor">{{ minutos }}</div>
+        <div class="unidad">MINUTOS</div>
+      </div>
+      <div class="bloque">
+        <div class="valor">{{ segundos }}</div>
+        <div class="unidad">SEGUNDOS</div>
+      </div>
     </div>
   </div>
+</div>
 
-  <!-- <router-outlet></router-outlet>   BOTON ASISTENCIA -->
-
-  <h1>¿Cuando y Dónde?</h1>
+  
+<h1 class="cuando-y-donde">¿Cuando y Dónde?</h1>
 
 <div class="ubicaciones">
+  
   <!-- Tarjeta CEREMONIA -->
 <div class="tarjeta">
-    <h3 class="titulo">CEREMONIA</h3>
+    <h3 class="titulo">Ceremonia</h3>
     <p class="lugar">Capilla de Nuestra Señora del Rosario de San Nicolás</p>
     <p class="fecha">27 de septiembre de 2025 • 17:30</p>
     <p class="direccion">Salas y Valdez 101, T4107 Yerba Buena, Tucumán</p>
@@ -93,27 +110,24 @@
   </div>
 
 <!-- Tarjeta RECEPCIÓN -->
-<div class="tarjeta">
-    <h3 class="titulo">RECEPCIÓN</h3>
-    <p class="lugar">Salón Keké Yerba Buena</p>
-    <p class="fecha">27 de septiembre de 2025 • 19:00</p>
-    <p class="direccion">Jorge Luis Borges, Pje. Elvira Imbaud y, Yerba Buena, Tucumán</p>
+  <div class="tarjeta">
+      <h3 class="titulo">Recepcion</h3>
+      <p class="lugar">Salón Keké Yerba Buena</p>
+      <p class="fecha">27 de septiembre de 2025 • 19:00</p>
+      <p class="direccion">Jorge Luis Borges, Pje. Elvira Imbaud y, Yerba Buena, Tucumán</p>
 
-    <div class="mapa-boton">
-      <a
-        class="btn-mapa"
-        href="https://www.google.com/maps/search/?api=1&query=Salón+Keké+Yerba+Buena+Jorge+Luis+Borges+Pje.+Elvira+Imbaud+Yerba+Buena+Tucumán"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        ¿Cómo llegar?
-      </a>
-    </div>
+      <div class="mapa-boton">
+        <a
+          class="btn-mapa"
+          href="https://www.google.com/maps/search/?api=1&query=Salón+Keké+Yerba+Buena+Jorge+Luis+Borges+Pje.+Elvira+Imbaud+Yerba+Buena+Tucumán"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ¿Cómo llegar?
+        </a>
+      </div>
   </div>
 </div>
-
-
-
 
 <h2>Informacion de la Fiesta</h2>
 <p>Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta.</p>
@@ -121,7 +135,7 @@
 <!-- Tarjeta Dress Code -->
 <div class="tarjeta">
   <h3 class="titulo">Dress Code</h3>
-  <div class="emoji">🤵</div>
+  <img src="assets/imagenes/pareja-de-boda.png" alt="Dress Code" class="imagen-icono" />
   <p class="oracion">Una orientación para que elijas tu mejor vestuario</p>
   <button class="btn-mapa" (click)="mostrarNubeDressCode = !mostrarNubeDressCode">
     Ver sugerencia
@@ -131,22 +145,8 @@
   </div>
 </div>
 
-<!-- Tarjeta Música -->
- <!--
-<div class="tarjeta">
-  <h3 class="titulo">Música</h3>
-  <div class="emoji">🎶</div>
-  <p class="oracion">¿Cuál es la canción que no debe faltar en la playlist de la fiesta?</p>
-  <button class="btn-mapa" (click)="mostrarNubeMusica = !mostrarNubeMusica">
-    Sugerir canción
-  </button>
-  <div *ngIf="mostrarNubeMusica" class="nube">
-    Podés enviarnos tu canción favorita por mensaje o en el formulario RSVP. 🎧
-  </div>
-</div>-->
-
 <!-------------------------------- MUSICA --------------------------------------------->
-<!-- <app-cancion></app-cancion> -->
+
 <app-cancion></app-cancion>
 
 
@@ -172,18 +172,25 @@
 <h2>Retrato de Nuestro Amor</h2>
 <p>Un minuto, un segundo, un instante que queda en la eternidad.</p>
 
-<!-- Carrusel de Fotos -->
-<div class="carrusel-container">
-  <button class="btn-carrusel" (click)="anterior()">‹</button>
+<!-- Galería de Fotos -->
 
-  <div class="carrusel">
-    <img *ngFor="let foto of fotosMostradas" [src]="foto" (click)="abrirModal(foto)" />
+<div class="galeria-container">
+  <h3 class="titulo">Nosotros y Luli</h3>
+  <div class="grid-fotos">
+    <img
+      *ngFor="let foto of fotos; let i = index"
+      [src]="foto"
+      (click)="abrirModal(foto)"
+      class="foto-animada"
+      [style.animationDelay]="(i * 100) + 'ms'"
+    />
   </div>
-
-  <button class="btn-carrusel" (click)="siguiente()">›</button>
 </div>
 
+
+
 <!-- Modal de imagen -->
+
 <div class="modal" *ngIf="fotoSeleccionada" (click)="cerrarModal()">
   <button class="modal-close-btn" (click)="cerrarModal()">×</button>
 
@@ -195,7 +202,9 @@
   </button>
 
   <div class="modal-content">
+<div class="modal-img-wrapper">
     <img [src]="fotoSeleccionada" alt="Foto seleccionada" (click)="$event.stopPropagation()" />
+</div>
   </div>
 
   <button
@@ -207,11 +216,15 @@
   </button>
 </div>
 
+
+<!--------------------------- compartir fotos instagram --------------------->
+
 <h2>Comparte tus fotos</h2>
 
 <div class="hashtag">
-  #LauYFer2025
+  #Lau&Fer2025 #27S #L&F 
 </div>
+<!---------------- Carrucel automatico ---------------->
 
 <div class="carrusel-auto">
   <div class="carrusel-track">
@@ -221,20 +234,12 @@
   </div>
 </div>
 
-<img src="/assets/imagenes/corazon-circular.png" alt="decoración" class="decoracion" />
+<img src="/assets/imagenes/dos-de-corazones.png" alt="decoración" class="decoracion" />
 
 <h1>Lau & Fer</h1>
 <p>27 de septiembre de 2025</p>
 
 </div>
-<!---------------------------- audio --------------------->
-
-<!-- 🎧 Audio oculto -->
-
-<!-- <button class="boton-musica" (click)="toggleMute()">
-  {{ isMuted ? '🔇' : '🔊' }}
-</button>-->
-
 
 </div>
 

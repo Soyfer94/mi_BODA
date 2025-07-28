@@ -1,5 +1,5 @@
 button {
-  background-color: #8e7cc3;
+   background-color: #b85d5d;
   color: white;
   padding: 1rem 2rem;
   border: none;
@@ -10,7 +10,7 @@ button {
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #7a6bb2;
+    background-color:#a34e4e;
     transform: translateY(-2px);
   }
 
@@ -31,6 +31,12 @@ button {
   width: 90%;
   max-width: 400px;
   z-index: 1000;
+  box-sizing: border-box;
+
+@media (max-width: 480px) {
+    padding: 1.5rem;
+    width: 95%;
+  }
 
   form {
     display: flex;
@@ -43,10 +49,12 @@ button {
       border-radius: 1rem;
       border: 1px solid #ccc;
       font-size: 1rem;
+      width: 100%; // ✅ que se adapten bien al contenedor
+      box-sizing: border-box;
     }
 
     button[type='submit'] {
-      background-color: #6aa84f;
+      background-color:  #b85d5d;
       color: white;
       padding: 0.8rem;
       font-size: 1rem;
@@ -56,29 +64,66 @@ button {
       transition: background-color 0.3s;
 
       &:hover {
-        background-color: #558b3f;
+        background-color:#a34e4e;
       }
     }
   }
+}
 
-  .cerrar-btn {
-    position: absolute;
-    top: 0.5rem;
+.cerrar-btn {
+  position: absolute;
+  top: 1rem; // 💡 Lo sube por fuera del borde superior
+  right: 0.0rem; // 💡 Lo corre hacia fuera del borde derecho
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #888;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.3s;
+
+  &:hover {
+    background: #f2f2f2;
+    color: #333;
+  }
+
+  @media (max-width: 480px) {
+    top: -2.5rem;
     right: 1rem;
-    background: transparent;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: #888;
-
-    &:hover {
-      color: #333;
-    }
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
   }
 }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); // oscurece el fondo
+  backdrop-filter: blur(3px); // desenfoca el fondo
+  z-index: 999; // justo detrás del formulario
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
-

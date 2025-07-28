@@ -18,16 +18,6 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 
 
-//@Component({
- // selector: 'app-home',
- // standalone: true,
- // imports: [CancionComponent],
- // templateUrl: './app.component.html',
- // styleUrls: ['./app.component.scss'],
-//})
-//export class HomeComponent {}
-
-
 export class AppComponent {
   title = 'Tarjeta de boda';
   
@@ -61,7 +51,7 @@ export class AppComponent {
   mostrarBotonMusica = false;
 
 // 🎵 Reproductor de audio
-  //@ViewChild('audioPlayer', { static: true }) audioPlayer!: ElementRef<HTMLAudioElement>;
+  
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
   canciones: string[] = [
     '/assets/audio/La_Plena_(W_Sound_05).mp3',
@@ -94,36 +84,6 @@ export class AppComponent {
     
     });
   }
-
-  
-  //activarMusica() {
-  //if (!this.hasInteracted && this.audioPlayer) {
-   // this.hasInteracted = true;
-    //const audio = this.audioPlayer.nativeElement;
-    //audio.muted = false;
-    //this.isMuted = false;
-    //audio.play().catch(err => {
-     // console.warn('No se pudo reproducir el audio:', err);
-    //});
- // }
-  // this.mostrarBienvenida = false;
-//}
-
-//activarMusica() {
-  //if (!this.hasInteracted && this.audioPlayer) {
-    //this.hasInteracted = true;
-    //this.mostrarBotonMusica = true;
-    //const audio = this.audioPlayer.nativeElement;
-    //audio.muted = false;
-    //this.isMuted = false;
-    //audio.play().catch(err => {
-     // console.warn('No se pudo reproducir el audio:', err);
-    //});
-  //}
-  //this.mostrarBienvenida = false;
-  
-//}
-
 
 activarMusica() {
   this.hasInteracted = true;

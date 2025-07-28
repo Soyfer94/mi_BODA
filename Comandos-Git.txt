@@ -1,0 +1,33 @@
+# 1. Preparamos a la rama para un commit
+git add .
+
+# 2. Agregamos un mensaje de commit
+git commit -m "Mensaje de commit de la fusión"
+
+# 3. Cambia a la rama principal (main)
+git checkout main
+
+# 4. Fusiona la rama Nombre-de-Rama en main
+git merge Nombre-de-Rama
+
+# 5. Envía los cambios fusionados a GitHub
+git push origin main
+
+
+ADICIONAL
+
+# Para saber en que rama del trabajo estoy
+git Branch
+
+# Para cambiar de rama
+git checkout Nombre-de-Rama
+
+CREAR RAMA NUEVA
+
+# 1. Entramos en la rama principal del proyecto "main"
+git checkout main 
+
+# 2. Le ponemos nombre y entramos en la nueva rama
+git checkout -b <nombre-de-tu-nueva-rama>
+
+

@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'KingsguardCalligraphy';
+  src: url('./assets/fonts/KingsguardCalligraphy.otf') format('opentype');
+      //  url('./assets/fonts/KingsguardCalligraphy-Regular.woff') format('woff'),
+       // url('./assets/fonts/KingsguardCalligraphy-Regular.ttf') format('truetype');
+  font-weight: normal; // ¡Corregido!
+  font-style: normal;  // ¡Corregido!
+  font-display: swap;  // ¡Corregido!
+}
+
+//@font-face {
+ // font-family: 'KingsguardCalligraphy'; // Mismo nombre de familia
+ // src: url('./assets/fonts/KingsguardCalligraphy.otf') format('opentype');
+ // font-weight: bold; // Declara que este es el peso "bold"
+ // font-style: normal;
+ // font-display: swap;
+//}
+
+// --- Fuente 2: Distant Stroke ---
+@font-face {
+  font-family: 'Blacksword.otf'; /* Dale un nombre claro y único a esta nueva fuente */
+  src: url('./assets/fonts/Blacksword.otf') format('opentype');
+  font-weight: normal; /* Asume que es normal a menos que tengas variantes */
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body {
+  max-width: 100%; /* Limita el ancho máximo al 100% del viewport */
+  overflow-x: hidden; /* Oculta cualquier contenido que se desborde horizontalmente */
+  // Si notas algún problema con el posicionamiento de elementos fijos o absolutos,
+  // a veces es útil añadir:
+  // position: relative;
+  //font-family: 'KingsguardCalligraphy', cursive;
+  //font-family: 'Distant_Stroke.otf';
+  //font-family: 'Blacksword.otf'cursive;
+}

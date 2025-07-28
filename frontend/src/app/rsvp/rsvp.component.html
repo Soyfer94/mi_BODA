@@ -1,26 +1,28 @@
 <!-- Botón visible por defecto -->
 <button (click)="mostrar()" *ngIf="!mostrarFormulario">Confirmar asistencia</button>
 
-<!-- Nube/flotante con formulario -->
-<div class="formulario-nube" *ngIf="mostrarFormulario">
-  <button class="cerrar-btn" (click)="cerrar()">✖</button>
+<div class="overlay" *ngIf="mostrarFormulario">
+  <!-- Nube/flotante con formulario -->
+  <div class="formulario-nube" *ngIf="mostrarFormulario">
+      <button class="cerrar-btn" (click)="cerrar()">✖</button>
 
- <form (ngSubmit)="enviarConfirmacion()">
-  <input [(ngModel)]="nombre" name="nombre" required placeholder="Escribí tu nombre" />
+    <form (ngSubmit)="enviarConfirmacion()">
+      <input [(ngModel)]="nombre" name="nombre" required placeholder="Escribí tu nombre" />
 
-  <select [(ngModel)]="asistencia" name="asistencia">
-    <option [value]="true">Sí</option>
-    <option [value]="false">No</option>
-  </select>
+      <select [(ngModel)]="asistencia" name="asistencia">
+        <option [value]="true">Sí</option>
+        <option [value]="false">No</option>
+      </select>
 
-  <select [(ngModel)]="comida" name="comida" required>
-    <option value="">Elegí tu opción de comida</option>
-    <option value="estandar">Estándar</option>
-    <option value="sin_tacc">Sin TACC</option>
-    <option value="vegetariana">Vegetariana</option>
-    <option value="vegana">Vegana</option>
-  </select>
+      <select [(ngModel)]="comida" name="comida" required>
+        <option value="">Elegí tu opción de comida</option>
+        <option value="estandar">Estándar</option>
+        <option value="sin_tacc">Sin TACC</option>
+        <option value="vegetariana">Vegetariana</option>
+        <option value="vegana">Vegana</option>
+      </select>
 
-  <button type="submit">Enviar confirmación</button>
-</form>
+      <button type="submit">Enviar confirmación</button>
+    </form>
+  </div>
 </div>
