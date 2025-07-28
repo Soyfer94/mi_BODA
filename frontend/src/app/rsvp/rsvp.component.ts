@@ -15,23 +15,34 @@ import { CommonModule } from '@angular/common';
 })
 export class RsvpComponent {
   nombre: string = '';
+  dni: string = '';      
+  email: string = '';    
   asistencia: boolean = true;
   comida: string = '';
+  mensajeExito: string = '';
 
   constructor(private confirmacionService: ConfirmacionService) {}
 
   enviarConfirmacion() {
     const data = {
       nombre: this.nombre,
+      dni: this.dni,
+      email: this.email,
       asistencia: this.asistencia,
       comida: this.comida
     };
 
       this.confirmacionService.confirmar(data).subscribe({
-      next: () => alert('¡Confirmación enviada!'),
+      next: () => {
+        this.mensajeExito = '🎉 ¡Gracias por confirmar tu asistencia!';
+        this.limpiarFormulario();
+        setTimeout(() => {
+        this.mensajeExito = '';
+        this.cerrar();
+        }, 3000);
+      },
       error: (err) => {
         console.error('Error en la confirmación:', err);
-        // Puedes usar un mensaje más específico si el error tiene un campo 'message'
         const mensajeError = err.message || 'Error al enviar confirmación';
         alert(`Error: ${mensajeError}`);
       }
@@ -48,5 +59,13 @@ mostrar() {
 cerrar() {
   this.mostrarFormulario = false;
 }
+
+private limpiarFormulario() {
+    this.nombre = '';
+    this.dni = '';
+    this.email = '';
+    this.asistencia = true;
+    this.comida = '';
+  }
 
 }

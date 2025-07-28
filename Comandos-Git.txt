@@ -17,7 +17,7 @@ git push origin main
 ADICIONAL
 
 # Para saber en que rama del trabajo estoy
-git Branch
+git branch
 
 # Para cambiar de rama
 git checkout Nombre-de-Rama

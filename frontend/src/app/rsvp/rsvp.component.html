@@ -7,7 +7,27 @@
       <button class="cerrar-btn" (click)="cerrar()">✖</button>
 
     <form (ngSubmit)="enviarConfirmacion()">
+
       <input [(ngModel)]="nombre" name="nombre" required placeholder="Escribí tu nombre" />
+
+      <input
+          [(ngModel)]="dni"
+          name="dni"
+          type="text"
+          required
+          placeholder="Ingresá tu DNI"
+          pattern="[0-9]*"
+          title="Solo números"
+        />
+
+        <input
+          [(ngModel)]="email"
+          name="email"
+          type="email"
+          required
+          placeholder="Ingresá tu e-mail"
+        />
+
 
       <select [(ngModel)]="asistencia" name="asistencia">
         <option [value]="true">Sí</option>
@@ -24,5 +44,8 @@
 
       <button type="submit">Enviar confirmación</button>
     </form>
+    
+    <p class="mensaje-exito" *ngIf="mensajeExito">{{ mensajeExito }}</p>
+
   </div>
 </div>

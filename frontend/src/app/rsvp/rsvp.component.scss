@@ -1,5 +1,5 @@
 button {
-   background-color: #b85d5d;
+  background-color: #b85d5d;
   color: white;
   padding: 1rem 2rem;
   border: none;
@@ -53,6 +53,21 @@ button {
       box-sizing: border-box;
     }
 
+
+    input[type="email"],
+    input[type="text"] {
+      background-color: #fff;
+      border: 1px solid #bbb;
+      font-family: inherit;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #b85d5d;
+      box-shadow: 0 0 0 2px rgba(184, 93, 93, 0.2);
+    }
+
     button[type='submit'] {
       background-color:  #b85d5d;
       color: white;
@@ -72,7 +87,7 @@ button {
 
 .cerrar-btn {
   position: absolute;
-  top: 1rem; // 💡 Lo sube por fuera del borde superior
+  top: -3rem; // 💡 Lo sube por fuera del borde superior
   right: 0.0rem; // 💡 Lo corre hacia fuera del borde derecho
   background: #fff;
   border: none;
@@ -126,4 +141,22 @@ button {
   to {
     opacity: 1;
   }
+}
+
+.mensaje-exito {
+  color: #4caf50;
+  background-color: #e6f4ea;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+  animation: aparecerDesaparecer 3s ease forwards;
+}
+
+@keyframes aparecerDesaparecer {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
 }

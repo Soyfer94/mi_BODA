@@ -6,12 +6,12 @@ const ExcelJS = require('exceljs');
 // POST: Guardar confirmación
 router.post('/confirmacion', async (req, res) => {
   try {
-    const { nombre, asistencia, comida } = req.body;
+    const { nombre, dni, email, asistencia, comida } = req.body;
 
     const result = await pool.query(
-      `INSERT INTO confirmaciones (nombre, asistencia, comida)
-       VALUES ($1, $2, $3) RETURNING *`,
-      [nombre, asistencia, comida]
+      `INSERT INTO confirmaciones (nombre, dni, email, asistencia, comida)
+       VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+      [nombre, dni, email, asistencia, comida]
     );
 
     res.status(201).json(result.rows[0]);
@@ -45,6 +45,8 @@ router.get('/exportar-excel', async (req, res) => {
     worksheet.columns = [
       { header: 'ID', key: 'id', width: 10 },
       { header: 'Nombre', key: 'nombre', width: 30 },
+      { header: 'DNI', key: 'dni', width: 15 },
+      { header: 'Email', key: 'email', width: 30 },
       { header: 'Asistencia', key: 'asistencia', width: 15 },
       { header: 'Comida', key: 'comida', width: 20 },
       { header: 'Fecha', key: 'fecha_confirmacion', width: 25 }
