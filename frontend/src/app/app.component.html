@@ -31,6 +31,11 @@
       </button>
      
       <button (click)="ingresarSinMusica()" class="btn btn-simple">
+    <img
+      src="assets/imagenes/musica.png"
+      alt="Ingresar sin música"
+      class="icon-button"
+    />
         Ingresar sin música
       </button>
     </div>
@@ -38,19 +43,37 @@
 </div>
 
 
-<div *ngIf="!mostrarBienvenida">
+<div id="inicio" *ngIf="!mostrarBienvenida">
 <!--------------------- abajo resto de la app ----------------->
 
 <section class="bienvenida">
-  <div class="imagen-lado">
-    <img src="/assets/imagenes/anillos.jpeg" alt="anillos" />
+  <div class="imagen-contenedor">
+  <div class="overlay">
+    <div class="contenido">
+    <!--  <p class="fecha">27/09/2025</p>-->
+
+      <div class="iniciales-svg">
+  <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Arco más plano (más abierto) -->
+      <path id="arco" d="M 20 120 Q 150 50 280 120" fill="none" />
+    </defs>
+
+    <text fill="white" >
+      <!-- Centrado real del texto -->
+      <textPath href="#arco" startOffset="50%" text-anchor="middle">
+        ¡NOS CASAMOS!
+      </textPath>
+    </text>
+  </svg>
+</div>
+      
+      <h2 class="nombres" >Laura </h2>
+      <h2 class="nombres" > Y </h2>
+      <h2 class="nombres" >Fernando</h2>
+     
+    </div>
   </div>
-  <div class="contenido-lado">
-    <p class="fecha">27/09/2025</p>
-    <h1 class="iniciales">L & F</h1>
-    <h2 class="nombres">LAU & FER</h2>
-    <p class="mensaje">"El amor todo lo puede, todo lo cree, todo lo espera, todo lo soporta." - 1 Corintios 13:7</p>
-   
   </div>
 </section>
 
@@ -58,11 +81,18 @@
 <div class="home-container">
 
 <!-------------------- CRONOMETRO -------------------------------------->
-
+<div class="scroll-animado">
   <div class="contenedor-contador">
+    
+     <p class="mensaje">
+        "El amor todo lo puede, todo lo cree, todo lo espera, todo lo soporta."
+        <br />
+        <span class="cita">– 1 Corintios 13:7</span>
+      </p>
+
   <h1 class="contador-titulo">Faltan</h1>
   <img src="/assets/imagenes/reloj.png" alt="decoración" class="decoracion">
-  
+    
   <div class="contador">
     <div class="bloques-tiempo">
       <div class="bloque">
@@ -84,9 +114,9 @@
     </div>
   </div>
 </div>
-
+</div>
   
-<h1 class="cuando-y-donde">¿Cuando y Dónde?</h1>
+<h1  class="cuando-y-donde">¿Cuando y Dónde?</h1>
 
 <div class="ubicaciones">
   
@@ -171,6 +201,9 @@
 
 <h2>Retrato de Nuestro Amor</h2>
 <p>Un minuto, un segundo, un instante que queda en la eternidad.</p>
+
+
+
 
 <!-- Galería de Fotos -->
 

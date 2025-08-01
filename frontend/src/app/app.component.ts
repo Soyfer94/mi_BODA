@@ -9,6 +9,7 @@ import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -80,9 +81,20 @@ export class AppComponent {
       audio.src = this.canciones[this.cancionActual];
       audio.play() .catch(() => {;
     });
-
-    
     });
+
+    //const animados = document.querySelectorAll('.scroll-animado');
+    //const observer = new IntersectionObserver((entries) => {
+    //entries.forEach(entry => {
+     // if (entry.isIntersecting) {
+     //   (entry.target as HTMLElement).classList.add('visible');
+     // }
+    //});
+    //}, { threshold: 0.1 });
+
+    //animados.forEach(el => observer.observe(el));
+
+
   }
 
 activarMusica() {
@@ -101,9 +113,16 @@ activarMusica() {
 
   console.log('Entró con música. mostrarBotonMusica:', this.mostrarBotonMusica);
   this.cdr.detectChanges();
+
+
+// Hacer scroll suave al contenido principal
+  setTimeout(() => {
+    const destino = document.getElementById("inicio");
+    if (destino) {
+      destino.scrollIntoView({ behavior: "smooth" });
+    }
+  }, 100);
 }
-
-
 
 
 
@@ -111,13 +130,28 @@ ingresarSinMusica() {
     this.hasInteracted = false;
     this.mostrarBienvenida = false;
     this.mostrarBienvenida = false;
-  }
+  
+
+// Hacer scroll suave al contenido principal
+  setTimeout(() => {
+    const destino = document.getElementById("inicio");
+    if (destino) {
+      destino.scrollIntoView({ behavior: "smooth" });
+    }
+  }, 100);
+}
+
+
+
 
   toggleMute() {
     const audio = this.audioPlayer.nativeElement;
     this.isMuted = !this.isMuted;
     audio.muted = this.isMuted;
   }
+
+
+  
 
 
 
@@ -141,7 +175,7 @@ ingresarSinMusica() {
       const offset = now.getTimezoneOffset() * 60000; // Offset en milisegundos para la zona horaria local
       const localNow = new Date(now.getTime() - offset); // Hora local en UTC para cálculo
 
-      const fechaBoda = new Date('2025-09-27T00:00:00-03:00'); // Fecha de la boda con offset de Tucumán
+      const fechaBoda = new Date('2025-09-27T17:30:00-03:00'); // Fecha de la boda con offset de Tucumán
       const diferencia = fechaBoda.getTime() - localNow.getTime();
 
       if (diferencia > 0) {
