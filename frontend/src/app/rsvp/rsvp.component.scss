@@ -1,5 +1,6 @@
 button {
-  background-color: #b85d5d;
+  //background-color: #b85d5d;
+  background-color: #8D4F32;
   color: white;
   padding: 1rem 2rem;
   border: none;
@@ -10,7 +11,7 @@ button {
   transition: all 0.3s ease;
 
   &:hover {
-    background-color:#a34e4e;
+    background-color:#b85d5d;
     transform: translateY(-2px);
   }
 

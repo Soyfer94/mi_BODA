@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export class CancionComponent {
   formCancion: FormGroup;
   mostrarFormulario = false;
+  animacionesIniciadas = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.formCancion = this.fb.group({
@@ -36,4 +37,43 @@ export class CancionComponent {
         });
     }
   }
+
+  /*---------- movimiento reveal--------------------- */
+
+
+  
+ngAfterViewInit() {
+  // Hacer scroll suave al contenido principal
+  setTimeout(() => {
+    const destino = document.getElementById("inicio");
+    if (destino) {
+      destino.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Esperar un poco más para asegurar que Angular renderizó todo
+    setTimeout(() => this.iniciarAnimacionesReveal(), 100);
+      }, 100);
+      
+    }
+
+
+
+   iniciarAnimacionesReveal() {
+    const elements = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    elements.forEach(el => observer.observe(el));
+  }
+
+
 }

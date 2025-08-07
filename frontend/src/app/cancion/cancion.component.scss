@@ -1,11 +1,13 @@
 .tarjeta {
-  background-color: #ffffff;
+  background-color: #f2e8e1;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
   text-align: center;
   margin-bottom: 2rem;
   animation: fadeIn 0.6s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  
   
 
   .titulo {
@@ -13,6 +15,14 @@
   }
 
 }
+
+@media (max-width: 500px) {
+    .tarjeta {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+
 
 .emoji {
   font-size: 3rem;
@@ -26,7 +36,7 @@
 }
 
 .btn-mapa {
-  background-color: #b85d5d;
+  background-color: #8D4F32;
     color: white;
     border: none;
     padding: 0.5rem 1.2rem;
@@ -39,6 +49,7 @@
     margin-top: 1rem;
     width: 100%;
    max-width: 300px;
+    
 }
 
 .btn-mapa:hover {
@@ -92,4 +103,53 @@
   height: auto;
   margin: 1rem auto;
   display: block;
+}
+
+
+/* ANIMACIONES DE ENTRADA */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px); // cambia a X si querés que entre desde un costado
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+
+
+
+.reveal-left {
+  transform: translateX(-50px);
+}
+.reveal-right {
+  transform: translateX(50px);
+}
+.reveal-up {
+  transform: translateY(50px);
+}
+.reveal-down {
+  transform: translateY(-50px);
+}
+
+
+
+
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+.reveal-blur {
+  opacity: 0;
+  filter: blur(6px);
+  transition: 
+    opacity 1s ease-out,
+    filter 1s ease-out;
+}
+
+.reveal-blur.active {
+  opacity: 1;
+  filter: blur(0);
 }

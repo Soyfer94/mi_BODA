@@ -1,18 +1,18 @@
 
- <!-- ✅ Reproductor de audio (¡solo uno!) -->
+      <!-- ✅ Reproductor de audio (¡solo uno!) -->
     <audio #audioPlayer preload="auto" loop></audio>
 
-<!-- 🔊 Botón de volumen (opcional) -->
-<button 
-  *ngIf="mostrarBotonMusica" 
-  class="boton-musica" 
-  (click)="toggleMute()">
- <!-- {{ isMuted ? '🔇' : '🔊' }}-->
-   <img 
-    [src]="isMuted ? 'assets/imagenes/pausa.png' : 'assets/imagenes/jugar.png'" 
-    alt="icono sonido" 
-    class="icono-musica" />
-</button>
+    <!-- 🔊 Botón de volumen (opcional) -->
+  <button 
+    *ngIf="mostrarBotonMusica" 
+    class="boton-musica" 
+    (click)="toggleMute()">
+      <!-- {{ isMuted ? '🔇' : '🔊' }}-->
+    <img 
+      [src]="isMuted ? 'assets/imagenes/pausa.png' : 'assets/imagenes/jugar.png'" 
+      alt="icono sonido" 
+      class="icono-musica" />
+  </button>
 
 <!-- Pantalla de bienvenida -->
 <div class="pantalla-bienvenida" *ngIf="mostrarBienvenida">
@@ -49,10 +49,10 @@
 <section class="bienvenida">
   <div class="imagen-contenedor">
   <div class="overlay">
-    <div class="contenido">
+    <div class="contenido reveal reveal-down">
     <!--  <p class="fecha">27/09/2025</p>-->
 
-      <div class="iniciales-svg">
+      <div class="iniciales-svg ">
   <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <!-- Arco más plano (más abierto) -->
@@ -80,68 +80,81 @@
 
 <div class="home-container">
 
-<!-------------------- CRONOMETRO -------------------------------------->
-<div class="scroll-animado">
-  <div class="contenedor-contador">
-    
-     <p class="mensaje">
-        "El amor todo lo puede, todo lo cree, todo lo espera, todo lo soporta."
-        <br />
-        <span class="cita">– 1 Corintios 13:7</span>
-      </p>
+  <!-------------------- CRONOMETRO -------------------------------------->
+  <!--  <div class="scroll-animado">  -->
+  
+  <section class="fondo-mensaje reveal reveal-blur ">    
 
-  <h1 class="contador-titulo">Faltan</h1>
-  <img src="/assets/imagenes/reloj.png" alt="decoración" class="decoracion">
-    
-  <div class="contador">
-    <div class="bloques-tiempo">
-      <div class="bloque">
-        <div class="valor">{{ dias }}</div>
-        <div class="unidad">DÍAS</div>
-      </div>
-      <div class="bloque">
-        <div class="valor">{{ horas }}</div>
-        <div class="unidad">HORAS</div>
-      </div>
-      <div class="bloque">
-        <div class="valor">{{ minutos }}</div>
-        <div class="unidad">MINUTOS</div>
-      </div>
-      <div class="bloque">
-        <div class="valor">{{ segundos }}</div>
-        <div class="unidad">SEGUNDOS</div>
+    <img src="/assets/imagenes/icono-frase-Ph.png" alt="decoración" class="deco-frase">
+
+    <h2>LLEGO EL GRAN DIA</h2>
+
+    <p class="mensaje ">    
+       "El amor todo lo puede, todo lo cree, todo lo espera, todo lo soporta."
+       <br />
+       <span class="cita">– 1 Corintios 13:7</span>
+    </p>
+  </section>
+
+  <div class="crono reveal">
+        <h1 class="contador-titulo">Faltan</h1>
+        <img src="/assets/imagenes/reloj03.png" alt="decoración" class="decoracion">
+
+    <div class="contenedor-contador">
+      <div class="contador">
+        <div class="bloques-tiempo">
+
+              <div class="bloque">
+                <div class="valor">{{ dias }}</div>
+                <div class="unidad">DÍAS</div>
+              </div>
+              <div class="bloque">
+                <div class="valor">{{ horas }}</div>
+                <div class="unidad">HORAS</div>
+              </div>
+              <div class="bloque">
+                <div class="valor">{{ minutos }}</div>
+                <div class="unidad">MINUTOS</div>
+              </div>
+              <div class="bloque">
+                <div class="valor">{{ segundos }}</div>
+                <div class="unidad">SEGUNDOS</div>
+              </div>
+
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-  
-<h1  class="cuando-y-donde">¿Cuando y Dónde?</h1>
 
-<div class="ubicaciones">
   
-  <!-- Tarjeta CEREMONIA -->
-<div class="tarjeta">
-    <h3 class="titulo">Ceremonia</h3>
-    <p class="lugar">Capilla de Nuestra Señora del Rosario de San Nicolás</p>
-    <p class="fecha">27 de septiembre de 2025 • 17:30</p>
-    <p class="direccion">Salas y Valdez 101, T4107 Yerba Buena, Tucumán</p>
+  <h1  class="cuando-y-donde">¿Cuando y Dónde?</h1>
 
-    <div class="mapa-boton">
-      <a
-        class="btn-mapa"
-        href="https://www.google.com/maps/search/?api=1&query=Capilla+Nuestra+Señora+del+Rosario+de+San+Nicolás+Salas+y+Valdez+101+Yerba+Buena+Tucumán"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        ¿Cómo llegar?
-      </a>
+  <div class="ubicaciones">
+  
+    <!-- Tarjeta CEREMONIA -->
+    <div class="tarjeta reveal reveal-left">
+      <h3 class="titulo">Ceremonia</h3>
+      <p class="lugar">Capilla de Nuestra Señora del Rosario de San Nicolás</p>
+      <p class="fecha">27 de septiembre de 2025 • 17:30</p>
+      <p class="direccion">Salas y Valdez 101, T4107 Yerba Buena, Tucumán</p>
+
+      <div class="mapa-boton">
+        <a
+          class="btn-mapa"
+          href="https://www.google.com/maps/search/?api=1&query=Capilla+Nuestra+Señora+del+Rosario+de+San+Nicolás+Salas+y+Valdez+101+Yerba+Buena+Tucumán"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ¿Cómo llegar?
+        </a>
+      </div>
     </div>
-  </div>
 
-<!-- Tarjeta RECEPCIÓN -->
-  <div class="tarjeta">
+    <!-- Tarjeta RECEPCIÓN -->
+    <div class="tarjeta reveal reveal-right">
+
       <h3 class="titulo">Recepcion</h3>
+
       <p class="lugar">Salón Keké Yerba Buena</p>
       <p class="fecha">27 de septiembre de 2025 • 19:00</p>
       <p class="direccion">Jorge Luis Borges, Pje. Elvira Imbaud y, Yerba Buena, Tucumán</p>
@@ -156,56 +169,109 @@
           ¿Cómo llegar?
         </a>
       </div>
+    </div>
   </div>
-</div>
 
-<h2>Informacion de la Fiesta</h2>
-<p>Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta.</p>
+    <h2>Informacion de la Fiesta</h2>
+    <p>Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta.</p>
 
-<!-- Tarjeta Dress Code -->
-<div class="tarjeta">
-  <h3 class="titulo">Dress Code</h3>
-  <img src="assets/imagenes/pareja-de-boda.png" alt="Dress Code" class="imagen-icono" />
-  <p class="oracion">Una orientación para que elijas tu mejor vestuario</p>
-  <button class="btn-mapa" (click)="mostrarNubeDressCode = !mostrarNubeDressCode">
-    Ver sugerencia
-  </button>
-  <div *ngIf="mostrarNubeDressCode" class="nube">
-    Elegante: Vestimenta formal, ideal para una celebración especial.
+  <div class="seccion-tarjetas">
+
+    <!-- Tarjeta Dress Code -->
+    <div class="tarjeta reveal reveal-left">
+      <h3 class="titulo">Dress Code</h3>
+      <img src="assets/imagenes/pareja-de-boda.png" alt="Dress Code" class="imagen-icono" />
+      <p class="oracion">Una orientación para que elijas tu mejor vestuario</p>
+      <button class="btn-mapa" (click)="mostrarNubeDressCode = !mostrarNubeDressCode">
+        Ver sugerencia
+      </button>
+      <div *ngIf="mostrarNubeDressCode" class="nube">
+        Elegante: Vestimenta formal, ideal para una celebración especial.
+      </div>
+    </div>
+
+    <!-------------------------------- MUSICA --------------------------------------------->
+
+    <app-cancion></app-cancion>
+
+
+    <!-- Tarjeta Info Adicional -->
+    <div class="tarjeta reveal reveal-left">
+      <h3 class="titulo">Info Adicional</h3>
+      <div class="emoji">💡</div>
+      <p class="oracion">Información adicional para tener en cuenta</p>
+      <button class="btn-mapa" (click)="mostrarNubeInfo = !mostrarNubeInfo">
+        Ver info
+      </button>
+      <div *ngIf="mostrarNubeInfo" class="nube">
+        En caso de lluvia, la celebración continúa normalmente ya que el lugar es techado. ☔
+      </div>
+    </div>
   </div>
-</div>
 
-<!-------------------------------- MUSICA --------------------------------------------->
+  <section class="mensaje-presencia reveal">
+    <img src="/assets/imagenes/dia-valentin.png" alt="decoración" class="decoracion">
+    <h3>¡ESPERAMOS PODER CONTAR CON TU PRESENCIA!</h3>
+    <P>Confirmar tu asistencia antes del 10/09/2025</P>
 
-<app-cancion></app-cancion>
 
-
-<!-- Tarjeta Info Adicional -->
-<div class="tarjeta">
-  <h3 class="titulo">Info Adicional</h3>
-  <div class="emoji">💡</div>
-  <p class="oracion">Información adicional para tener en cuenta</p>
-  <button class="btn-mapa" (click)="mostrarNubeInfo = !mostrarNubeInfo">
-    Ver info
-  </button>
-  <div *ngIf="mostrarNubeInfo" class="nube">
-    En caso de lluvia, la celebración continúa normalmente ya que el lugar es techado. ☔
+  <div class="main-content-wrapper">
+    <router-outlet></router-outlet>
   </div>
-</div>
+</section>
 
-<div class="main-content-wrapper">
-  <router-outlet></router-outlet>
-</div>
+  <section class="cbu">
+    <p>Tu presencia es el regalo mas importante para nosotros. Pero si deseas celebrar con un detalle adicional, puedes ayudarnos con nuestra luna de miel.</p>
+    <p>• CBU en ver mas</p>
+    <p>• Buzón en el salón</p>
+    
+    <button class="btn-mapa-ver" (click)="mostrarCBU = !mostrarCBU">Ver Más</button>
+
+    <!-- <div *ngIf="mostrarCBU" class="cbu-detalle"> -->
+
+  <div [class.activo]="mostrarCBU"  class="cbu-detalle-wrapper">
+    <div class="cbu-detalle">
+  
+      <div class="dato">
+        <label>Alias</label>
+        <div class="copiable">
+          <p class="valor fuerte">{{ alias }}</p>
+          <button (click)="copiarTexto(alias, 'alias')" title="Copiar Alias">📋</button>
+        </div>
+        <div *ngIf="copiadoAlias" class="mensaje-copiado">Copiado ✅</div>
+      </div>
+
+      <div class="dato">
+        <label>CBU</label>
+        <div class="copiable">
+          <p class="valor fuerte">{{ cbu }}</p>
+          <button (click)="copiarTexto(cbu, 'cbu')" title="Copiar CBU">📋</button>
+        </div>
+        <div *ngIf="copiadoCBU" class="mensaje-copiado">Copiado ✅</div>
+      </div>
+
+      <div class="dato">
+        <label>Banco</label>
+        <p class="valor">Banco Ejemplo</p>
+      </div>
+
+      <div class="dato">
+        <label>Titular</label>
+        <p class="valor">Fernando & Laura</p>
+      </div>
+
+      </div>
+  </div>
+  </section>
+
+
+  <h2>Retrato de Nuestro Amor</h2>
+  <p>Un minuto, un segundo, un instante que queda en la eternidad.</p>
 
 
 
-<h2>Retrato de Nuestro Amor</h2>
-<p>Un minuto, un segundo, un instante que queda en la eternidad.</p>
 
-
-
-
-<!-- Galería de Fotos -->
+  <!-- Galería de Fotos -->
 
 <div class="galeria-container">
   <h3 class="titulo">Nosotros y Luli</h3>

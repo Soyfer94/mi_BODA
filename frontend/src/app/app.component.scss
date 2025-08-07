@@ -2,18 +2,21 @@
 
 
 .home-container {
-  
-  padding: 2rem 1rem;
+
+  padding: 0 1rem 7rem 1rem;
+  //padding: 2rem 1rem;
+
   //background: linear-gradient(to bottom, #fff8f0, #fcebe0);
-  color: #5a3e36;
-   background-image: url('/assets/imagenes/Bien venidos.jpg');
+  //color: #5a3e36;
+  color: #8D4F32;
+  // background-image: url('/assets/imagenes/Bien venidos.jpg');
     background-size: cover;       // o "contain" si preferís que no se recorte
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed; // esto hace que el fondo quede fijo al hacer scroll
   
 
-  h1, h2, p {
+  h1, h2, h3, p {
    
     text-align: center; /* ESTO ES LO QUE LOS CENTRA HORIZONTALMENTE */
     width: 100%; // Asegura que el elemento ocupe todo el ancho para que text-align funcione bien
@@ -22,7 +25,7 @@
 
   h1 {
     font-size: 2.5rem;
-    color: #a34e4e;
+    color: #8D4F32;
     margin-bottom: 0.5rem;
     //font-family: 'Blacksword.otf' cursive;
   }
@@ -30,7 +33,15 @@
   h2 {
     font-size: 2rem;
     margin-top: 2rem;
-    color: #b85d5d;
+    //color: #b85d5d;
+    color: #8D4F32;
+  }
+
+  h3 {
+   // font-size: 2rem;
+    //margin-top: 2rem;
+    //color: #b85d5d;
+    color: #8D4F32;
   }
 
   p {
@@ -39,13 +50,14 @@
   }
 
   .tarjeta {
-    background-color: #ffffff;
+    background-color: #f2e8e1;
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
     text-align: center;
     margin-bottom: 2rem;
     animation: fadeIn 0.6s ease-in-out;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   }
 
   .emoji {
@@ -79,13 +91,24 @@
     padding: 1rem 0;
    
     .tarjeta {
-      width: 300px;
-      margin: 0;
+      flex: 1 1 300px;  // esto hace que se adapte mejor
+    max-width: 300px;
+    min-width: 250px;
     }
   }
 
+
+  @media (max-width: 500px) {
+    .tarjeta {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+
+
   .btn-mapa {
-    background-color: #b85d5d;
+    //background-color: #b85d5d;
+    background-color: #8D4F32;
     color: white;
     border: none;
     padding: 0.5rem 1.2rem;
@@ -101,6 +124,51 @@
       background-color: #a34e4e;
     }
   }
+
+  .btn-mapa-ver {
+    //background-color: #b85d5d;
+    background-color:  #8D4F32;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 1rem;
+
+    &:hover {
+      background-color: #a34e4e;
+    }
+  }
+
+
+.seccion-extra {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+
+  .tarjeta {
+    flex: 1 1 300px;
+    max-width: 300px;
+    min-width: 250px;
+    margin: 0 auto;
+  }
+
+  app-cancion {
+    flex: 1 1 100%;
+    margin: 1rem 0;
+  }
+}
+
+
+
+
+
 
   .carrusel {
     display: flex;
@@ -127,7 +195,7 @@
 
 .bienvenida {
   position:relative;
-  background-image: url('/assets/imagenes/Bien venidos.jpg');
+ // background-image: url('/assets/imagenes/Bien venidos.jpg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -226,8 +294,9 @@
 
     .mensaje {
       font-size: 1.1rem;
-    font-style: italic;
-    //font-family: 'MsMadi-Regular.ttf', cursive;
+      font-style: italic;
+      //font-family: 'MsMadi-Regular.ttf', cursive;
+      
     }
 
     .cita {
@@ -238,6 +307,56 @@
    }
 }
 }
+/* -------------------------  Mensaje tierno ----------------------------------- */
+
+.fondo-mensaje {
+  position: relative;
+  width: 100vw; /* ancho completo */
+  margin-left: calc(-50vw + 50%);
+  height: 105vh; /* alto completo de la pantalla */
+  //background-color: #a34e4e;
+  //background-color: #F4E9E4;;
+  background-color: #F8F5F0;
+  //padding: 0 2rem;
+  
+
+
+ 
+  //padding: 0 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* centra verticalmente */
+  text-align: center;  /* centra el texto */
+  
+
+
+    .mensaje {
+      font-size: 1.3rem;
+      font-style: italic;
+      max-width: 800px;
+      margin: 0 auto;
+      //color: #e2d8b0;
+      //color: #8D4F32;
+      //color: #889882;
+      color: #8D4F32;
+      background-color: transparent;
+      padding: 2rem 1rem 1rem 0rem;
+  }
+
+  .cita {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    //color: #8D4F32;
+    color: #8D4F32;
+  }
+
+  h2{
+    color: #8D4F32;
+  }
+}
+
 
 @keyframes fadeIn {
   from {
@@ -275,18 +394,35 @@
 }
 
 /* --------------------------- cronómetro --------------------------------*/
+
+.crono{
+  width: 100vw;
+  //background-color: 	#D8D5D0; // o el color que quieras
+  background-color: #A0A79E;
+  //background-color: #F4F2ED;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2rem 1rem; // margen interno para que no quede todo pegado
+  box-sizing: border-box;
+  margin-left: calc(-50vw + 50%);
+}
+
 .contenedor-contador {
+  width: 100%;
+  max-width: 100%; // por si heredaba restricciones
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  background-color: transparent;
 }
 
 .contador-titulo {
   font-size: 2rem;
   margin-bottom: 10px;
-  color: #a34e4e;
+ //color: #a34e4e;
+  color: #8D4F32;
  // font-family: 'Cinzel Decorative', serif;
   //font-family: 'Blacksword.otf', cursive;
  font-family: 'Ms Madi', cursive;
@@ -303,13 +439,11 @@
 }
 
 .contador {
-  margin: 0 auto;
-  width: 100%;
+ width: 100%;
   max-width: 600px;
-  //font-family: 'Cinzel Decorative', serif;
+  margin: 0 auto;
   font-size: 1.6rem;
   color: #a34e4e;
-
   display: flex;
   justify-content: center;
   padding: 0 10px;
@@ -326,7 +460,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  //background-color: rgba(255, 255, 255, 0.8);
   padding: 10px 15px;
   border-radius: 12px;
   min-width: 70px;
@@ -341,6 +475,55 @@
   font-size: 1rem;
   margin-top: 4px;
 }
+
+/* ANIMACIONES DE ENTRADA */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px); // cambia a X si querés que entre desde un costado
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+
+
+
+.reveal-left {
+  transform: translateX(-50px);
+}
+.reveal-right {
+  transform: translateX(50px);
+}
+.reveal-up {
+  transform: translateY(50px);
+}
+.reveal-down {
+  transform: translateY(-50px);
+}
+
+
+
+
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+.reveal-blur {
+  opacity: 0;
+  filter: blur(6px);
+  transition: 
+    opacity 1s ease-out,
+    filter 1s ease-out;
+}
+
+.reveal-blur.active {
+  opacity: 1;
+  filter: blur(0);
+}
+
 
 /* --------------------------- carrucel --------------------------------*/
 
@@ -422,7 +605,8 @@
    //font-family: 'Dancing Script', cursive;
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: #a34e4e;
+    //color: #a34e4e;
+    color: #8D4F32;
     //font-family: 'KingsguardCalligraphy', cursive;
     font-family: 'Blacksword.otf', cursive ;
   }
@@ -636,6 +820,47 @@ body.modal-open {
   overflow: hidden;
 }
 
+
+// Mensaje previo a confirmar
+
+.mensaje-presencia {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background-color: #f2e8e1;
+  background-color: #A3B3A1;
+  background-color: #6B756A;
+  background-color:	#A0A79E;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 4rem 1rem; // más aire arriba y abajo
+  box-sizing: border-box;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  h3 {
+    font-size: 1rem;
+    //color: #a34e4e;
+    color: #F4F2ED;
+    //font-family: 'Ms Madi', cursive;
+    
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: black;
+    margin-bottom: 2rem;
+  }
+}
+
+
 // Estilos que tenías y no afectan directamente el modal, pero los dejo por contexto
 .main-content-wrapper {
   width: 100%;
@@ -647,9 +872,131 @@ body.modal-open {
   flex-direction: column;
   align-items: center;
 }
+/*----------------------  CBU   ------------------------- */
+.cbu {
+
+  width: 100vw;
+  min-height: 70vh; 
+  background-image: url('/assets/imagenes/Bien venidos.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  //padding: 3rem 1.5rem 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4rem 2rem;
+  text-align: center;
+  
+ transform: translateX(-30px);
+
+  @media (max-width: 768px) {
+    padding: 10rem 1rem 1rem 1rem;
+  }
+
+}
+
+.cbu-detalle {
+  background-color: #fff;
+  padding: 2rem;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .dato {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      color: #7a3e3e;
+    }
+
+    .valor {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #333;
+      word-break: break-word;
+      white-space: pre-wrap;
+
+      &.fuerte {
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+
+  
+
+.copiable {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+  
+
+  button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.2rem;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.mensaje-copiado {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #2b7a2b;
+  background-color: #d6f5d6;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  display: inline-block;
+  animation: fadeInOut 2s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-5px); }
+  20% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-5px); }
+}
+
+.cbu-detalle-wrapper {
+  //overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.8s ease, opacity 0.8s ease, transform 0.8s ease;
+
+  &.activo {
+    max-height: 1000px; // suficiente para todo el contenido
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 h1,
 h2,
+h3,
 p {
   text-align: center;
   width: 100%;
@@ -664,6 +1011,10 @@ p {
   height: auto;
   margin: 10px auto;
   background-color: transparent;
+}
+
+.deco-frase{
+  padding: 1rem;
 }
 
 @keyframes fadeInUp {
@@ -840,7 +1191,15 @@ button {
 .contador {
   text-align: center;
   padding: 2rem 1rem;
-  color: #e2d8b0;
+  //color: #e2d8b0;
+  //color: #D5A187;
+  color: gray;
+  color: #6B756A;
+  color: #A0A79E;
+  color: #F4F2ED;
+  color: #B89D94;
+  color: #36454F;
+  color: #8D4F32;
   background-color: transparent;
   width: 100%;
   max-width: 100vw;
@@ -860,7 +1219,9 @@ button {
   }
 
   .bloque {
-    background-color: #12432d;
+    //background-color: #12432d;
+    background-color: #E8D7CD;
+    //background-color: #A0A79E;
     padding: 1.5rem;
     border-radius: 1.5rem;
     width: 110px;

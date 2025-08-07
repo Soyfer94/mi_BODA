@@ -4,26 +4,26 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';  // <-- Importá HttpClientModule
 import { CommonModule } from '@angular/common'; // 👈 Asegurate de importar esto
 import { CancionComponent } from '../app/cancion/cancion.component';
-//----audio-----
-import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { ChangeDetectorRef } from '@angular/core';
+  //----audio-----
+  import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+  import { ChangeDetectorRef } from '@angular/core';
 
 
 
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [ RouterModule, RouterOutlet, HttpClientModule, CommonModule, CancionComponent],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']  // Usá `.css` si no estás usando SASS
-})
+  @Component({
+    selector: 'app-root',
+    standalone: true,
+    imports: [ RouterModule, RouterOutlet, HttpClientModule, CommonModule, CancionComponent],
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']  // Usá `.css` si no estás usando SASS
+  })
 
 
-export class AppComponent {
+  export class AppComponent {
   title = 'Tarjeta de boda';
   
 
-// ⏳ Contador regresivo
+  // ⏳ Contador regresivo
   dias: number = 0;
   horas: number = 0;
   minutos: number = 0;
@@ -43,6 +43,12 @@ export class AppComponent {
   fotoSeleccionada: string | null = null;
   indiceFotoModal: number = -1; // Nuevo: Índice de la foto actual en el modal
 
+
+ // Botones CBU y Alias
+ alias = 'boda.fernando.lau';
+  cbu = '0123456789012345678901';
+
+
   // 📍 Estados de visibilidad para nubes
 
   mostrarNubeDressCode = false;
@@ -50,8 +56,12 @@ export class AppComponent {
   mostrarNubeInfo = false;
   mostrarBienvenida = true;
   mostrarBotonMusica = false;
+  mostrarCBU = false;
+  copiadoAlias = false;
+  copiadoCBU = false;
+  animacionesIniciadas = false;
 
-// 🎵 Reproductor de audio
+  // 🎵 Reproductor de audio
   
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
   canciones: string[] = [
@@ -83,21 +93,14 @@ export class AppComponent {
     });
     });
 
-    //const animados = document.querySelectorAll('.scroll-animado');
-    //const observer = new IntersectionObserver((entries) => {
-    //entries.forEach(entry => {
-     // if (entry.isIntersecting) {
-     //   (entry.target as HTMLElement).classList.add('visible');
-     // }
-    //});
-    //}, { threshold: 0.1 });
-
-    //animados.forEach(el => observer.observe(el));
-
-
   }
 
-activarMusica() {
+
+
+
+
+
+  activarMusica() {
   this.hasInteracted = true;
   this.mostrarBotonMusica = true;
   this.mostrarBienvenida = false;
@@ -115,31 +118,38 @@ activarMusica() {
   this.cdr.detectChanges();
 
 
-// Hacer scroll suave al contenido principal
+  // Hacer scroll suave al contenido principal
   setTimeout(() => {
     const destino = document.getElementById("inicio");
     if (destino) {
       destino.scrollIntoView({ behavior: "smooth" });
     }
-  }, 100);
-}
+
+    // Esperar un poco más para asegurar que Angular renderizó todo
+    setTimeout(() => this.iniciarAnimacionesReveal(), 100);
+      }, 100);
+
+    }
 
 
-
-ingresarSinMusica() {
+  ingresarSinMusica() {
     this.hasInteracted = false;
     this.mostrarBienvenida = false;
     this.mostrarBienvenida = false;
   
 
-// Hacer scroll suave al contenido principal
+  // Hacer scroll suave al contenido principal
   setTimeout(() => {
     const destino = document.getElementById("inicio");
     if (destino) {
       destino.scrollIntoView({ behavior: "smooth" });
     }
-  }, 100);
-}
+
+
+  // Esperar un poco más para asegurar que Angular renderizó todo
+    setTimeout(() => this.iniciarAnimacionesReveal(), 100);
+      }, 100);
+  }
 
 
 
@@ -221,7 +231,7 @@ ingresarSinMusica() {
     }
   }
 
-// 📸 Lógica del Modal
+  // 📸 Lógica del Modal
   abrirModal(foto: string) {
     this.fotoSeleccionada = foto;
     // Encontramos el índice de la foto seleccionada para la navegación del modal
@@ -247,6 +257,47 @@ ingresarSinMusica() {
       this.fotoSeleccionada = this.fotos[this.indiceFotoModal];
     }
   }
+
+  //-----------------------CBU y Alias--------------------------------
+
+  copiarTexto(texto: string, tipo: 'alias' | 'cbu') {
+  navigator.clipboard.writeText(texto).then(() => {
+    if (tipo === 'alias') {
+      this.copiadoAlias = true;
+      setTimeout(() => (this.copiadoAlias = false), 2000);
+    } else {
+      this.copiadoCBU = true;
+      setTimeout(() => (this.copiadoCBU = false), 2000);
+    }
+  });
+  }
+
+  // -------------------------Efecto de movimiento---------------------
+
+
+  iniciarAnimacionesReveal() {
+    const elements = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    elements.forEach(el => observer.observe(el));
+  }
+
+
 }
 
-//-----------------------audio--------------------------------
+
+
+
+
+
+
