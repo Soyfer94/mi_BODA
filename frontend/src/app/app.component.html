@@ -9,7 +9,7 @@
     (click)="toggleMute()">
       <!-- {{ isMuted ? '🔇' : '🔊' }}-->
     <img 
-      [src]="isMuted ? 'assets/imagenes/pausa.png' : 'assets/imagenes/jugar.png'" 
+      [src]="isMuted ?  'assets/imagenes/video.png' :  'assets/imagenes/pausa01.png'" 
       alt="icono sonido" 
       class="icono-musica" />
   </button>
@@ -74,6 +74,12 @@
      
     </div>
   </div>
+
+    <div class="scroll-indicator" *ngIf="mostrarIndicador" (click)="scrollAHOME()">
+      <img src="/assets/imagenes/flecha-hacia-abajo.png" alt="decoración" width="40" >
+      
+    </div>
+
   </div>
 </section>
 
@@ -134,6 +140,7 @@
     <!-- Tarjeta CEREMONIA -->
     <div class="tarjeta reveal reveal-left">
       <h3 class="titulo">Ceremonia</h3>
+      <img src="/assets/imagenes/iglecia.jpg" alt="decoración" width="250" >
       <p class="lugar">Capilla de Nuestra Señora del Rosario de San Nicolás</p>
       <p class="fecha">27 de septiembre de 2025 • 17:30</p>
       <p class="direccion">Salas y Valdez 101, T4107 Yerba Buena, Tucumán</p>
@@ -154,7 +161,7 @@
     <div class="tarjeta reveal reveal-right">
 
       <h3 class="titulo">Recepcion</h3>
-
+<img src="/assets/imagenes/salon_01.jpeg" alt="decoración" width="250" >
       <p class="lugar">Salón Keké Yerba Buena</p>
       <p class="fecha">27 de septiembre de 2025 • 19:00</p>
       <p class="direccion">Jorge Luis Borges, Pje. Elvira Imbaud y, Yerba Buena, Tucumán</p>
@@ -172,7 +179,7 @@
     </div>
   </div>
 
-    <h2>Informacion de la Fiesta</h2>
+    <h1 class="info-fest">Informacion de la Fiesta</h1>
     <p>Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta.</p>
 
   <div class="seccion-tarjetas">
@@ -186,7 +193,17 @@
         Ver sugerencia
       </button>
       <div *ngIf="mostrarNubeDressCode" class="nube">
-        Elegante: Vestimenta formal, ideal para una celebración especial.
+        <section class="formal"> 
+        Formal - Elegante 
+        </section>
+        <br>
+        <section class="atenti"> 
+        ¡ATENCION MUJERES!
+        </section>
+        <br>
+        <section class="colores">
+        No usar estos colores: blanco, natural, dorado, fucsia y rosa.
+        </section>
       </div>
     </div>
 
@@ -204,26 +221,33 @@
         Ver info
       </button>
       <div *ngIf="mostrarNubeInfo" class="nube">
+        <section class="lluvia">
         En caso de lluvia, la celebración continúa normalmente ya que el lugar es techado. ☔
+        </section>
+        <br>
+        <section class="niños">
+        👶 Los niños son bienvenidos, pero su cuidado y supervisión estarán a cargo de sus padres en todo momento.
+        </section>
       </div>
     </div>
   </div>
 
   <section class="mensaje-presencia reveal">
-    <img src="/assets/imagenes/dia-valentin.png" alt="decoración" class="decoracion">
-    <h3>¡ESPERAMOS PODER CONTAR CON TU PRESENCIA!</h3>
-    <P>Confirmar tu asistencia antes del 10/09/2025</P>
+    <img src="/assets/imagenes/dia-valentin.png" alt="decoración" class="decoracion reveal reveal-down">
+    <h3 class=" reveal reveal-down">¡ESPERAMOS PODER CONTAR CON TU PRESENCIA!</h3>
+    <P class=" reveal reveal-down">Confirmar tu asistencia antes del 10/09/2025</P>
 
 
-  <div class="main-content-wrapper">
+  <div class="main-content-wrapper reveal reveal-up">
     <router-outlet></router-outlet>
   </div>
 </section>
 
   <section class="cbu">
-    <p>Tu presencia es el regalo mas importante para nosotros. Pero si deseas celebrar con un detalle adicional, puedes ayudarnos con nuestra luna de miel.</p>
-    <p>• CBU en ver mas</p>
-    <p>• Buzón en el salón</p>
+    <p class=" reveal reveal-down">Tu presencia es el regalo mas importante para nosotros. Pero si deseas celebrar con un detalle adicional, puedes ayudarnos con nuestra luna de miel.</p>
+    <p class=" reveal reveal-up" data-delay="0" >• CBU o Alias</p>
+    
+    <p class=" reveal reveal-up" data-delay="500">• Buzón en el salón</p>
     
     <button class="btn-mapa-ver" (click)="mostrarCBU = !mostrarCBU">Ver Más</button>
 
@@ -252,77 +276,89 @@
 
       <div class="dato">
         <label>Banco</label>
-        <p class="valor">Banco Ejemplo</p>
+        <p class="valor">Naranja X</p>
       </div>
 
       <div class="dato">
         <label>Titular</label>
-        <p class="valor">Fernando & Laura</p>
+        <p class="valor">Maria Laura Garcia</p>
       </div>
 
       </div>
   </div>
   </section>
 
+                <!-- Galería de Fotos -->
 
-  <h2>Retrato de Nuestro Amor</h2>
-  <p>Un minuto, un segundo, un instante que queda en la eternidad.</p>
+  <div class="galeria">
+
+    <h1 class="tit-nos">Nosotros</h1>
+    <p>Un minuto, un segundo, un instante que queda en la eternidad.</p>
+
+    
+
+    <div class="galeria-container">
+  
+      <div class="grid-fotos">
+        <img
+          *ngFor="let foto of fotos; let i = index"
+          [src]="foto"
+          (click)="abrirModal(foto)" 
+          class="foto-animada"
+          [style.animationDelay]="(i * 100) + 'ms'"
+        />
+      </div>
+    </div>
 
 
+      <!-- Modal de imagen -->
 
+      
 
-  <!-- Galería de Fotos -->
+    <!-- Modal -->
+    <div
+      class="modal"
+      *ngIf="fotoSeleccionada"
+      [ngStyle]="{ top: modalTop + 'px', left: modalLeft + 'px' }"
+      (click)="cerrarModal()"
 
-<div class="galeria-container">
-  <h3 class="titulo">Nosotros y Luli</h3>
-  <div class="grid-fotos">
-    <img
-      *ngFor="let foto of fotos; let i = index"
-      [src]="foto"
-      (click)="abrirModal(foto)"
-      class="foto-animada"
-      [style.animationDelay]="(i * 100) + 'ms'"
-    />
+      >
+      <button class="modal-close-btn" (click)="cerrarModal()">×</button>
+
+      <button
+        class="modal-nav-btn prev"
+        (click)="$event.stopPropagation(); modalAnterior()"
+      >
+        ‹
+      </button>
+
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-img-wrapper">
+          <img [src]="fotoSeleccionada" alt="Foto seleccionada" />
+        </div>
+      </div>
+
+      <button
+        class="modal-nav-btn next"
+        (click)="$event.stopPropagation(); modalSiguiente()"
+      >
+        ›
+      </button>
+    </div>
+
   </div>
-</div>
 
-
-
-<!-- Modal de imagen -->
-
-<div class="modal" *ngIf="fotoSeleccionada" (click)="cerrarModal()">
-  <button class="modal-close-btn" (click)="cerrarModal()">×</button>
-
-  <button
-    class="modal-nav-btn prev"
-    (click)="$event.stopPropagation(); modalAnterior()"
-  >
-    ‹
-  </button>
-
-  <div class="modal-content">
-<div class="modal-img-wrapper">
-    <img [src]="fotoSeleccionada" alt="Foto seleccionada" (click)="$event.stopPropagation()" />
-</div>
-  </div>
-
-  <button
-    class="modal-nav-btn next"
-    class="modal-nav-btn next"
-    (click)="$event.stopPropagation(); modalSiguiente()"
-  >
-    ›
-  </button>
-</div>
 
 
 <!--------------------------- compartir fotos instagram --------------------->
-
-<h2>Comparte tus fotos</h2>
-
-<div class="hashtag">
-  #Lau&Fer2025 #27S #L&F 
-</div>
+    <div class="qr-container">
+      <h2>Únete a nuestro grupo de WhatsApp</h2>
+        <p>Comparte charlas y fotos del evento con todos los invitados.</p>
+        <img src="/assets/imagenes/QR_boda_01.jpg" alt="QR"  width="150">
+        <a href="https://chat.whatsapp.com/DG56zoexgpMIKhuIB8UWi1" target="_blank" class="whatsapp-btn">
+    Ir al grupo
+  </a>
+    </div>
 <!---------------- Carrucel automatico ---------------->
 
 <div class="carrusel-auto">
@@ -335,8 +371,8 @@
 
 <img src="/assets/imagenes/dos-de-corazones.png" alt="decoración" class="decoracion" />
 
-<h1>Lau & Fer</h1>
-<p>27 de septiembre de 2025</p>
+<h1 class="LyF">Lau Y Fer</h1>
+<p class=" LayFe">27 de septiembre de 2025</p>
 
 </div>
 

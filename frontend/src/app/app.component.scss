@@ -4,13 +4,8 @@
 .home-container {
 
   padding: 0 1rem 7rem 1rem;
-  //padding: 2rem 1rem;
-
-  //background: linear-gradient(to bottom, #fff8f0, #fcebe0);
-  //color: #5a3e36;
   color: #8D4F32;
-  // background-image: url('/assets/imagenes/Bien venidos.jpg');
-    background-size: cover;       // o "contain" si preferís que no se recorte
+  background-size: cover;       // o "contain" si preferís que no se recorte
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed; // esto hace que el fondo quede fijo al hacer scroll
@@ -27,26 +22,36 @@
     font-size: 2.5rem;
     color: #8D4F32;
     margin-bottom: 0.5rem;
-    //font-family: 'Blacksword.otf' cursive;
   }
 
   h2 {
     font-size: 2rem;
     margin-top: 2rem;
-    //color: #b85d5d;
     color: #8D4F32;
   }
 
   h3 {
-   // font-size: 2rem;
-    //margin-top: 2rem;
-    //color: #b85d5d;
-    color: #8D4F32;
+       color: #8D4F32;
   }
 
   p {
     font-size: 1rem;
     color: #555;
+    font-family: sans-serif;
+  }
+
+
+  .seccion-tarjetas {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;  // esto agrega espacio vertical entre cada hijo (tarjetas y app-cancion)
+    padding: 1rem 0;  // opcional para no pegarse a los bordes
+    margin-bottom: 2rem;
+    font-family: sans-serif;
+  }
+
+  .info-fest{
+    font-family: "Ms Madi", cursive;
   }
 
   .tarjeta {
@@ -79,7 +84,15 @@
     padding: 1rem;
     border-radius: 12px;
     font-size: 0.95rem;
+    //line-height: 2;
     animation: fadeIn 0.4s ease-in-out;
+
+    
+
+  section:last-child {
+    margin-bottom: 0; /* Sin margen extra en la última sección */
+  }
+
   }
 
   .ubicaciones {
@@ -95,8 +108,19 @@
     max-width: 300px;
     min-width: 250px;
     }
+
+    .tarjeta img {
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* sombra suave */
+      display: block;            /* evita espacio raro debajo de la img */
+      max-width: 100%;           /* hace que sea responsive */
+      height: auto;
+    }
   }
 
+    .ubicaciones p {
+      font-family: sans-serif;
+    }
 
   @media (max-width: 500px) {
     .tarjeta {
@@ -107,7 +131,6 @@
 
 
   .btn-mapa {
-    //background-color: #b85d5d;
     background-color: #8D4F32;
     color: white;
     border: none;
@@ -119,6 +142,7 @@
     display: inline-block;
     text-decoration: none;
     margin-top: 1rem;
+    font-family: sans-serif;
 
     &:hover {
       background-color: #a34e4e;
@@ -126,7 +150,6 @@
   }
 
   .btn-mapa-ver {
-    //background-color: #b85d5d;
     background-color:  #8D4F32;
     color: white;
     border: none;
@@ -144,31 +167,25 @@
     }
   }
 
+  .seccion-extra {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
 
-.seccion-extra {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  padding: 1rem;
+    .tarjeta {
+      flex: 1 1 300px;
+      max-width: 300px;
+      min-width: 250px;
+      margin: 0 auto;
+    }
 
-  .tarjeta {
-    flex: 1 1 300px;
-    max-width: 300px;
-    min-width: 250px;
-    margin: 0 auto;
+    app-cancion {
+      flex: 1 1 100%;
+      margin: 1rem 0;
+    }
   }
-
-  app-cancion {
-    flex: 1 1 100%;
-    margin: 1rem 0;
-  }
-}
-
-
-
-
-
 
   .carrusel {
     display: flex;
@@ -187,15 +204,15 @@
   .hashtag {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #a34e4e;
+    color: gray;
     text-align: center;
     margin: 1rem 0;
+    font-family: sans-serif;
   }
 }
 
 .bienvenida {
   position:relative;
- // background-image: url('/assets/imagenes/Bien venidos.jpg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -212,14 +229,25 @@
   .imagen-contenedor {
   position: relative;
   width: 100%;
-  //max-width: 500px;
   height: 100vh;
   background-image: url('/assets/imagenes/IMG_3864.jpg');
   background-size: cover;
   background-position: 90% center;
   background-repeat: no-repeat;
- // border-radius: 8px;
   overflow: hidden;
+
+
+  // degradado desde abajo hasta la mitad
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%; // hasta la mitad
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    pointer-events: none; // no bloquea clics
+  }
 
 
   .overlay {
@@ -235,13 +263,13 @@
     padding: 2rem;
   }
 
- 
-
     .contenido {
         max-width: 800px;
         padding: 2rem;
         text-align: center;
         color: white;
+        position: relative;
+        z-index: 1;
       }
     
     .fecha {
@@ -251,52 +279,44 @@
       }
 
       .iniciales {
-       // font-family: 'Blacksword.otf', cursive;
         font-size: 2rem;
-        
-        //font-family: 'Montserrat', sans-serif ;
         margin: 0;
-
-        //font-family: 'Dancing Script', cursive;
-        //font-family: 'GreatVibes-Regular.ttf', cursive;
         letter-spacing: 3px;
         text-transform: uppercase;
       }
 
       .iniciales-svg {
-  width: 100%;
-  max-width: 500px;
-  margin: 2rem auto;
-  display: flex;
-  justify-content: center;
-  font-size: 20px;
-  font-family: sans-serif;
+        width: 100%;
+        max-width: 500px;
+        margin: 6rem auto;
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+        font-family: sans-serif;
+        margin-top: -6rem; // baja las iniciales
  
+      svg {
+        width: 100%;
+        height: auto;
+       // margin-top: 4rem;
+      }
 
-
-
-  svg {
-    width: 100%;
-    height: auto;
-  }
-
-  text {
-    letter-spacing: 4px;
-  }
-}
+      text {
+        letter-spacing: 4px;
+      }
+    }
 
     .nombres {
-      font-size: 2rem;
+      font-size: 3rem;
       margin-bottom: 1rem;
      font-family: 'Ms Madi', cursive;
-      
+      margin-top: 2rem
     }
 
     .mensaje {
       font-size: 1.1rem;
       font-style: italic;
-      //font-family: 'MsMadi-Regular.ttf', cursive;
-      
+      font-family: 'Times New Roman', Times, serif;
     }
 
     .cita {
@@ -305,40 +325,79 @@
     margin-top: 0.5rem;
     color: #ddd;
    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      animation: pulseFloat 1.5s infinite;
+      z-index: 2;
+      text-shadow: 0 0 5px rgba(0,0,0,0.8);
+      padding: 10px;
+ 
 }
+
+@keyframes pulseFloat {
+  0% {
+    transform: translate(-50%, 0) scale(1);
+  }
+  25% {
+    transform: translate(-50%, -5px) scale(1.1);
+  }
+  50% {
+    transform: translate(-50%, 0) scale(1.2);
+  }
+  75% {
+    transform: translate(-50%, 5px) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, 0) scale(1);
+  }
 }
-/* -------------------------  Mensaje tierno ----------------------------------- */
+
+         /* Para pantallas chicas, lo subo más */
+    @media (max-width: 600px) {
+      .scroll-indicator {
+        bottom: 60px;
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Para pantallas muy chicas (celulares) */
+    @media (max-width: 400px) {
+      .scroll-indicator {
+        bottom: 60px;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+
+      /* -------------------------  Mensaje tierno ----------------------------------- */
 
 .fondo-mensaje {
   position: relative;
   width: 100vw; /* ancho completo */
   margin-left: calc(-50vw + 50%);
   height: 105vh; /* alto completo de la pantalla */
-  //background-color: #a34e4e;
-  //background-color: #F4E9E4;;
   background-color: #F8F5F0;
-  //padding: 0 2rem;
-  
-
-
- 
-  //padding: 0 0rem;
+    
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center; /* centra verticalmente */
   text-align: center;  /* centra el texto */
   
-
-
     .mensaje {
       font-size: 1.3rem;
       font-style: italic;
       max-width: 800px;
       margin: 0 auto;
-      //color: #e2d8b0;
-      //color: #8D4F32;
-      //color: #889882;
       color: #8D4F32;
       background-color: transparent;
       padding: 2rem 1rem 1rem 0rem;
@@ -348,15 +407,20 @@
     display: block;
     margin-top: 0.5rem;
     font-size: 1rem;
-    //color: #8D4F32;
     color: #8D4F32;
   }
 
   h2{
     color: #8D4F32;
+    font-family:  sans-serif;
   }
-}
 
+  p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+  }
+
+}
 
 @keyframes fadeIn {
   from {
@@ -393,39 +457,27 @@
   }
 }
 
-/* --------------------------- cronómetro --------------------------------*/
+        /* --------------------------- cronómetro --------------------------------*/
 
-.crono{
+.crono {
   width: 100vw;
-  //background-color: 	#D8D5D0; // o el color que quieras
   background-color: #A0A79E;
-  //background-color: #F4F2ED;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 2rem 1rem; // margen interno para que no quede todo pegado
+  padding: 2rem 1rem;
   box-sizing: border-box;
   margin-left: calc(-50vw + 50%);
 }
 
 .contenedor-contador {
   width: 100%;
-  max-width: 100%; // por si heredaba restricciones
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   background-color: transparent;
-}
-
-.contador-titulo {
-  font-size: 2rem;
-  margin-bottom: 10px;
- //color: #a34e4e;
-  color: #8D4F32;
- // font-family: 'Cinzel Decorative', serif;
-  //font-family: 'Blacksword.otf', cursive;
- font-family: 'Ms Madi', cursive;
 }
 
 .decoracion {
@@ -438,54 +490,101 @@
   }
 }
 
+.contador-titulo {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #8D4F32;
+  font-family: 'Ms Madi', cursive;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
 .contador {
- width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 1.6rem;
-  color: #a34e4e;
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  max-width: 100vw;
   padding: 0 10px;
+  color: #8D4F32;
+  background-color: transparent;
+  text-align: center;
+  overflow-x: hidden;
+  margin: 0;
 }
 
 .bloques-tiempo {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
+  flex-wrap: wrap; // permite que se acomoden bien
+  gap: 8px;
+  width: 100%;
+  padding: 1rem 0;
+  
+
+  @media (max-width: 480px) {
+    gap: 6px;
+    flex-wrap: nowrap;         // fuerza que estén en la misma fila 
+  }
 }
 
 .bloque {
+  background-color: #E8D7CD;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  width: 70px;
+  min-width: 65px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+  border: 2px solid #A67B5B; // marrón suave o café :)
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  //background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px 15px;
-  border-radius: 12px;
-  min-width: 70px;
+  flex: 0 0 auto; // ayuda al scroll lateral
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  .valor {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+
+    @media (max-width: 480px) {
+      font-size: 1.4rem;
+    }
+
+    @media (max-width: 360px) {
+      font-size: 1.2rem;
+    }
+  }
+
+  .unidad {
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
+    text-align: center;
+
+    @media (max-width: 480px) {
+      font-size: 0.6rem;
+    }
+
+    @media (max-width: 360px) {
+      font-size: 0.55rem;
+    }
+  }
 }
 
-.valor {
-  font-size: 2.2rem;
-  font-weight: bold;
-}
 
-.unidad {
-  font-size: 1rem;
-  margin-top: 4px;
-}
+      /*----------------- Reveal -------------------------------*/
 
-/* ANIMACIONES DE ENTRADA */
+  /* ANIMACIONES DE ENTRADA */
 .reveal {
   opacity: 0;
   transform: translateY(50px); // cambia a X si querés que entre desde un costado
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 1s ease, transform 1s ease;
   will-change: opacity, transform;
 }
-
-
-
 
 .reveal-left {
   transform: translateX(-50px);
@@ -500,16 +599,10 @@
   transform: translateY(-50px);
 }
 
-
-
-
-
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
-
-
 
 .reveal-blur {
   opacity: 0;
@@ -525,34 +618,39 @@
 }
 
 
-/* --------------------------- carrucel --------------------------------*/
+      /* --------------------------- carrucel --------------------------------*/
 
-/* Contenedor principal del carrusel */
+      /* Contenedor principal del carrusel */
+
 .carrusel-auto {
   overflow: hidden; /* Oculta cualquier imagen que se desborde del contenedor */
   white-space: nowrap; /* Evita que las imágenes se apilen verticalmente */
   position: relative; /* Necesario para posicionar el track si fuera el caso, o para elementos hijos */
-  width: 100%; /* O el ancho fijo que desees para tu carrusel */
-  padding: 20px 0; /* Un poco de espacio vertical si lo necesitas */
+  width: 100vw; /* O el ancho fijo que desees para tu carrusel */
+   margin: -16px; /* sin márgenes laterales */
+  //padding: 0; /* sin padding lateral */
+  padding: 40px 0; /* Un poco de espacio vertical si lo necesitas */
   box-shadow: none; /* Sombra sutil para un aspecto más "lindo" */
   background-color: transparent; /* Un fondo suave para el carrusel */
+   position: relative;
+ // transform: translateX(-10%);
 }
 
 /* Contenedor de las imágenes (el que se moverá) */
 .carrusel-track {
   display: flex; /* Usa flexbox para alinear las imágenes horizontalmente */
-  animation: carruselScroll 30s linear infinite; /* Aplica la animación */
+  animation: carruselScroll 40s linear infinite; /* Aplica la animación */
   
 }
 
 /* Estilos para cada imagen dentro del carrusel */
 .carrusel-track img {
   flex-shrink: 0; /* Evita que las imágenes se encojan */
-  width: 180px; /* Ancho fijo para cada imagen. ¡Ajusta este valor! */
-  height: 190px; /* Altura fija para cada imagen. ¡Ajusta este valor! */
+  width: 290px; /* Ancho fijo para cada imagen. ¡Ajusta este valor! */
+  height: 300px; /* Altura fija para cada imagen. ¡Ajusta este valor! */
   object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
-  margin: 0 15px; /* Espacio entre las imágenes */
-  border-radius: 8px; /* Bordes redondeados para un look más suave */
+  //margin: 0 15px; /* Espacio entre las imágenes */
+  //border-radius: 8px; /* Bordes redondeados para un look más suave */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad a cada foto */
   transition: transform 0.3s ease-in-out; /* Transición suave para efectos hover */
 }
@@ -588,6 +686,25 @@
 
 /* --- Estilos para el Carrusel Estático (Miniaturas) --- */
 /*-------------------Galeria de fotos ---------------------------*/
+
+
+
+.galeria{
+  width: 100vw; /* ancho total de la ventana */
+  min-height: 74vh; /* opcional: alto total de la ventana */
+  transform: translateX(-16px);
+
+//  background-image: url('/assets/imagenes/fondo-texturado.jpg'); /* ruta a tu archivo */
+  background-repeat: repeat; /* se repite para cubrir toda la pantalla */
+  background-size: auto;     /* mantiene tamaño original de la textura */
+
+  margin: 0;  /* quita margen externo */
+  padding: 0; /* quita padding interno */
+  
+  position: relative;
+}
+
+
 
 .galeria-container {
   
@@ -653,8 +770,8 @@
 
     img {
       width: 100%; // Las imágenes ocuparán el 100% de su columna
-      max-width: 100px; /* Tamaño máximo para las imágenes en celular */
-      height: 70px; /* Altura fija para imágenes pequeñas */
+     // max-width: 100px; /* Tamaño máximo para las imágenes en celular */
+     // height: 70px; /* Altura fija para imágenes pequeñas */
     }
   }
 
@@ -666,62 +783,107 @@
 /* Ajuste adicional para pantallas muy pequeñas (opcional) */
 @media (max-width: 480px) {
   .grid-fotos {
-    gap: 5px;
+    gap: 3px;
     img {
-      height: 60px; /* Ajusta la altura si es necesario para pantallas muy pequeñas */
+      height: 140px; /* Ajusta la altura si es necesario para pantallas muy pequeñas */
+     // width: auto; /* ajusta ancho automáticamente */
     }
   }
 }
 
 /* --- Estilos para el Modal de Imagen de Pantalla Completa --- */
 
+/*
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  max-width: 95vw;      
+  max-height: 95vh; 
+
   background-color: rgba(0, 0, 0, 0.85);
   display: flex;
-  align-items: center; /* Centra verticalmente el contenido */
-  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: center; 
+  justify-content: center; 
+
   z-index: 1000;
   backdrop-filter: blur(5px);
   padding: 20px;
   box-sizing: border-box;
-  overflow: hidden; /* Evita scroll en el modal mismo */
-}
 
-.modal-content {
-  position: relative; /* Importante para el z-index de la imagen si los botones estuvieran dentro */
-  max-width: 95vw; /* Ajusta el ancho máximo para dejar espacio a los botones laterales */
-  max-height: 95vh; /* Ajusta la altura máxima para dejar espacio a los botones y el de cierre */
+  overflow: hidden; 
+}
+*/
+
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  
+  width: 100vw;
+  height: 100vh;
+//  max-width: 95vw;
+ // max-height: 95vh;
+
+  background-color: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
-  // Remueve el overflow: hidden; si estaba aquí, ya que el wrapper maneja eso
-  flex-shrink: 1; /* Permite que el contenido se encoja si no hay espacio */
+  
+  z-index: 1000;
+  padding: 20 px;
+  box-sizing: border-box;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
 }
+
+
+/* Contenedor del contenido dentro del modal */
+
+
+.modal-content {
+//  display: flex;
+ // position: relative; 
+  max-width: 95vw; 
+  max-height: 95vh; 
+   object-fit: contain;
+ // display: flex;
+ // align-items: center;
+ // justify-content: center;
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  //overflow: hidden;  /*si estaba aquí, ya que el wrapper maneja eso*/
+  //flex-shrink: 1; 
+}
+
 
 .modal-img-wrapper {
   display: flex;
+  position: relative; 
   align-items: center;
   justify-content: center;
-  width: 100%; /* Asegura que el wrapper ocupe el espacio disponible */
-  height: 100%; /* Asegura que el wrapper ocupe el espacio disponible */
+  width: auto;
+  height: auto;
 }
 
 .modal-content img {
-  max-width: 100%; /* La imagen ocupará el 100% del ancho del modal-img-wrapper (que ya está limitado por modal-content) */
-  max-height: 100%; /* La imagen ocupará el 100% de la altura del modal-img-wrapper */
-  object-fit: contain; /* Muestra toda la imagen, con barras si es necesario */
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
   border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  display: block; /* Importante para evitar espacios extra si la imagen es inline */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: block;
 }
 
+
 /* Botones de navegación dentro del modal (anterior/siguiente) */
+
 .modal-nav-btn {
   position: absolute; /* Posicionamiento absoluto respecto al .modal */
   top: 50%;
@@ -807,7 +969,7 @@
     font-size: 1.8em;
   }
   @media (max-width: 480px) {
-    top: 10px;
+    top: 125px;
     right: 10px;
     width: 30px;
     height: 30px;
@@ -821,15 +983,13 @@ body.modal-open {
 }
 
 
+
 // Mensaje previo a confirmar
 
 .mensaje-presencia {
   position: relative;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  background-color: #f2e8e1;
-  background-color: #A3B3A1;
-  background-color: #6B756A;
   background-color:	#A0A79E;
   background-size: cover;
   background-position: center;
@@ -846,10 +1006,7 @@ body.modal-open {
 
   h3 {
     font-size: 1rem;
-    //color: #a34e4e;
-    color: #F4F2ED;
-    //font-family: 'Ms Madi', cursive;
-    
+    color: #F4F2ED; 
     margin-bottom: 1rem;
   }
 
@@ -861,7 +1018,7 @@ body.modal-open {
 }
 
 
-// Estilos que tenías y no afectan directamente el modal, pero los dejo por contexto
+      // Estilos que tenías y no afectan directamente el modal, pero los dejo por contexto
 .main-content-wrapper {
   width: 100%;
   max-width: 1200px;
@@ -872,17 +1029,18 @@ body.modal-open {
   flex-direction: column;
   align-items: center;
 }
-/*----------------------  CBU   ------------------------- */
+
+      /*----------------------  CBU   ------------------------- */
+
 .cbu {
 
-  width: 100vw;
+  width: 106vw;
   min-height: 70vh; 
   background-image: url('/assets/imagenes/Bien venidos.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  //padding: 3rem 1.5rem 2rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -890,13 +1048,13 @@ body.modal-open {
 
   padding: 4rem 2rem;
   text-align: center;
+  font-family: sans-serif;
   
  transform: translateX(-30px);
 
   @media (max-width: 768px) {
     padding: 10rem 1rem 1rem 1rem;
   }
-
 }
 
 .cbu-detalle {
@@ -944,8 +1102,6 @@ body.modal-open {
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
-
-  
 
   button {
     background: none;
@@ -1033,7 +1189,7 @@ p {
   animation: fadeInUp 0.6s ease forwards;
 }
 
-/*--------------- Botones musica ON/OFF ------------------*/
+      /*--------------- Botones musica ON/OFF ------------------*/
 
 
 .boton-musica {
@@ -1050,16 +1206,30 @@ p {
   display: inline-flex;          // que el botón solo sea tan ancho como su contenido
   align-items: center;
   justify-content: center;
-  width: 50px;                  // igual que el ícono
-  height: 50px;                 // igual que el ícono
+  width: 100px;                  // igual que el ícono
+  height: 100px;                 // igual que el ícono
   overflow: hidden;             // para evitar "extra space"
   transition: transform 0.2s ease;  // para animar hover
+  
 }
 
 .boton-musica:hover {
   transform: scale(1.1);         // agrandar un poco al pasar el mouse
   }
 
+  /* Ajuste para pantallas más chicas */
+  @media (max-width: 768px) {
+  .boton-musica {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    width: 50px;   /* achicar el botón */
+    height: 50px;
+  }
+
+  .icono-musica {
+    width: 100%;
+  }
+}
 
 .pantalla-bienvenida {
  //position: fixed;
@@ -1068,7 +1238,7 @@ p {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #1e2c26;
+  background-color: #8D4F32;
   color: #e2c68c;
   display: flex;
   justify-content: center;
@@ -1095,9 +1265,6 @@ p {
   font-size: 3rem;
   font-weight: bold;
   margin: 0.5rem 0;
- // font-family: 'Georgia', serif;
-  //font-family: 'Distant_Stroke.otf', cursive;
-  //font-family: 'Blacksword.otf', cursive;
   font-family: 'Ms Madi', cursive;
 }
 
@@ -1154,6 +1321,8 @@ p {
 
   .titulo {
     font-size: 2.2rem;
+    font-family: "Ms Madi", cursive;
+    font-family: sans-serif;
   }
 
   .descripcion {
@@ -1184,111 +1353,7 @@ button {
   display: block;
 }
 
-/*------------------- CRONOMETRO --------------------------- */
-
-
-
-.contador {
-  text-align: center;
-  padding: 2rem 1rem;
-  //color: #e2d8b0;
-  //color: #D5A187;
-  color: gray;
-  color: #6B756A;
-  color: #A0A79E;
-  color: #F4F2ED;
-  color: #B89D94;
-  color: #36454F;
-  color: #8D4F32;
-  background-color: transparent;
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden;
-  margin: 0;
-
-  .contador-titulo {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .bloques-tiempo {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-  }
-
-  .bloque {
-    //background-color: #12432d;
-    background-color: #E8D7CD;
-    //background-color: #A0A79E;
-    padding: 1.5rem;
-    border-radius: 1.5rem;
-    width: 110px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .valor {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-
-    .unidad {
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-    }
-  }
-
-  .bloque:hover {
-    transform: scale(1.05);
-  }
-
-  // 📱 Responsive
-  @media (max-width: 768px) {
-    .contador-titulo {
-      font-size: 2rem;
-    }
-
-    .bloques-tiempo {
-      gap: 1rem;
-    }
-
-    .bloque {
-      width: 90px;
-      padding: 1rem;
-
-      .valor {
-        font-size: 2rem;
-      }
-
-      .unidad {
-        font-size: 0.75rem;
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-    .bloque {
-      width: 80px;
-
-      .valor {
-        font-size: 1.8rem;
-      }
-
-      .unidad {
-        font-size: 0.7rem;
-      }
-    }
-  }
-}
-
-
-/*------------------- VARIOS --------------------------- */
+      /*------------------- VARIOS --------------------------- */
 
 .imagen-icono {
   width: 80px;
@@ -1298,32 +1363,78 @@ button {
 }
 
 .cuando-y-donde {
-  font-family: 'Blacksword.otf', cursive;
+  font-family: "Ms Madi", cursive;
 }
-/*----------------scroll animado---------------------*/
 
-/*.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-   will-change: opacity, transform;
-  pointer-events: none;
+.tit-nos {
+  font-family: "Ms Madi", cursive;
+ /* quita margen externo */
+  padding: 0; /* quita padding interno */
+  align-items: center; 
+   text-align: center;
+   justify-content: center;
+}
 
-  &.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+.comp-foto {
+  font-family: "Ms Madi", cursive;
+}
+
+.LyF {
+  font-family: "Ms Madi", cursive
+}
+
+.LayFe {
+  font-family: sans-serif;
+}
+
+.mensaje {
+  font-size: 1.1rem;
+      font-style: italic;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.qr-container {
+  display: flex;               /* activa Flexbox */
+  flex-direction: column;      /* coloca los hijos uno debajo del otro */
+  justify-content: center;     /* centra verticalmente */
+  align-items: center;         /* centra horizontalmente */
+  text-align: center;          /* centra el texto dentro del contenedor */
+  font-family: sans-serif;
+  margin-bottom: 20px;
+
+  h2 {
+    font-family: "Ms Madi", cursive;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #7a3e3e;
+    
   }
-}
 
-.scroll-animado {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    max-width: 400px;
+    font-family: sans-serif;
+  }
 
-.scroll-animado.visible {
-  opacity: 1;
-  transform: translateY(0);
+  .whatsapp-btn {
+    background-color:  #8D4F32;;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    //font-weight: bold;
+    //font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #1ebe57;
+    }
+  }
+
+  img {
+    margin-bottom: 20px;
+  }
+
 }
-  */
