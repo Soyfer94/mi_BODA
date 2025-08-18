@@ -23,7 +23,7 @@ export class CancionComponent {
 
   enviarCancion() {
     if (this.formCancion.valid) {
-      this.http.post('http://localhost:3000/api/canciones', this.formCancion.value)
+      this.http.post('https://bodalauyfer.com/api/canciones', this.formCancion.value)
         .subscribe({
           next: () => {
             alert('¡Gracias por tu sugerencia!');

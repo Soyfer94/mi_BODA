@@ -52,6 +52,54 @@ router.get('/exportar-excel', async (req, res) => {
       { header: 'Fecha', key: 'fecha_confirmacion', width: 25 }
     ];
 
+
+
+    
+
+    // Agregar filas
+    result.rows.forEach(row => {
+      worksheet.addRow(row);
+    });
+
+    // Configurar cabeceras
+    res.setHeader(
+      'Content-Type',
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    );
+    res.setHeader(
+      'Content-Disposition',
+      'attachment; filename=confirmaciones.xlsx'
+    );
+
+    // Enviar el archivo
+    await workbook.xlsx.write(res);
+    res.end();
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error al exportar a Excel');
+  }
+});
+
+
+
+router.get('/exportar-excel-canciones', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM canciones ORDER BY id');
+
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet('Canciones');
+
+    // Definir columnas
+    worksheet.columns = [
+      { header: 'ID', key: 'id', width: 10 },
+      { header: 'Cancion', key: 'cancion', width: 30 },
+      { header: 'Fecha', key: 'fecha_sugerencia', width: 25 }
+    ];
+
+
+
+    
+
     // Agregar filas
     result.rows.forEach(row => {
       worksheet.addRow(row);
